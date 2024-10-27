@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, Pressable, Image, TextInput, SafeAreaView, Dime
 import styles from '../styles/style';
 
 const ProductDetail = () => {
+    const [noti, setNoti] = useState(false);
+
   return (
     <SafeAreaView style={[styles.container, {alignItems: 'center'}]}>
         <View style={{ flexDirection: 'row', alignItems: 'center', width: '100%', justifyContent: 'space-between', marginBottom: 20 }}>
@@ -26,18 +28,18 @@ const ProductDetail = () => {
                 <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/bc98/ce2a/91aabe8f25895b029c3835581aef2336?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=q5A~iWL5LcHb3KZblzr3ZKsgsDgT9vAxhMQMNmfT28tnm1VoS14yNbKBeW32BgJHXDjHpztgAThYl-IZdTlkCRf1rD4g~iCr-qEeJwFmTu81wAFz5nhPSxtS0AbChL71Z9eej~xrVGuQ-HwdTZBlZS6xteeCeDNh6fHJJLGxr51chvlbPxcRWxxvp6aVO1c-wNUY8Nfo7Djad6VKQMaueoU5qAYMlv26d7Rt5PuFkeADZRKzf319oAd8KJEgNVzeHoZnB~eMNrdscKmbPmUjEpmi53lEbA2uEhvk6xG9G7Jef033QJkALgj7X7FxViA7DH41ECDCmKzs8Z~S1qsdaA__'}} 
                 style={{width: 375, height: 200, borderRadius: 5}}/>
             </View>
-            <View style={{ width: '100%' ,flexDirection: 'row', justifyContent: 'space-between', marginTop: 20}}>
+            <View style={{ width: 380 ,flexDirection: 'row', marginTop: 20, justifyContent: 'space-between'}}>
                 <Text style={styles.headingText}>$59</Text>
                 <View style={[stylesLocal.ratingContainer, {marginRight: 10}]}>
                     <Text style={stylesLocal.ratingText}>⭐ 4.5</Text>
                     <Text style={stylesLocal.reviewText}>(99 reviews)</Text>
                 </View>
             </View>
-            <View style={{width: '100%', marginTop: 20, paddingTop: 20, borderTopWidth: 1, borderTopColor: 'rgba(236, 236, 236, 1)'}}>
+            <View style={{width: 375, marginTop: 20, paddingTop: 20, borderTopWidth: 1, borderTopColor: 'rgba(236, 236, 236, 1)'}}>
                 <Text style={styles.headingText}>Description</Text>
-                <Text style={{width: '95%', fontSize: 14, color: 'rgba(190, 190, 190, 1)', marginLeft: 10}}>Quis occaecat magna elit magna do nisi ipsum amet excepteur tempor nisi exercitation qui...</Text>
+                <Text style={{width: '90%', fontSize: 14, color: 'rgba(190, 190, 190, 1)', marginLeft: 10, marginTop: 10}}>Quis occaecat magna elit magna do nisi ipsum amet excepteur tempor nisi exercitation qui...</Text>
                 <View style={{marginTop: 20, marginLeft: 10, flexDirection: 'row'}}>
-                    <View style={{justifyContent: 'space-between', marginRight: 50}}>
+                    <View style={{justifyContent: 'space-between', marginRight: 75}}>
                         <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 20}}> 
                             <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/41cc/4e71/4fec5dd2801cf8f5147694f1aa0d86cb?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=anya39Vy289FdxmHJXyNsXaTDT-2QhNuNb-DwH6GRxazseEckkpupwOiCmSURn6Tam4WX8f-NvARa4ZTPNh9weqmaNbT9otKOAeO40793z3a9xJu9W4jCYk4j78GKRNP53XRzOH2xgYdJKN~UHMo5NUcz8KJEdPl78K6HSry-cvvR2voNefQAteynnxNoZkmgc~AIANaGGafr-1Pwy7goPPAEmCCja8Mu8ldAFc59qjYLqCa-SSmLy3ySq1692ET8v4diBs2Ja5Y5dl17-A7iDQ8wiCxgI5yVgvxxFhDuwap88wXFHjoER9W1Vx0oLE3~4NX-9XEHqMDoSlyXIDcPg__'}} 
                             style={{width: 24, height: 24, marginRight: 10}} />
@@ -66,7 +68,7 @@ const ProductDetail = () => {
             <View style={{width: '100%', marginTop: 20, paddingTop: 20, borderTopWidth: 1, borderTopColor: 'rgba(236, 236, 236, 1)'}}>
                 <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                     <Text style={styles.headingText}>Reviews</Text>
-                    <Pressable><Text style={{fontSize: 14, color: 'rgba(190, 190, 190, 1)'}}>See all ></Text></Pressable>
+                    <Pressable><Text style={{fontSize: 14, color: 'rgba(190, 190, 190, 1)', marginRight: 10}}>See all ></Text></Pressable>
                 </View>
                 <View style={{marginTop: 20, marginBottom: 20, flexDirection: 'row'}}>
                     <View style={{marginLeft: 30}}>
@@ -126,9 +128,61 @@ const ProductDetail = () => {
                         <Text style={[stylesLocal.reviewText, {marginLeft: 10}]}>3 days ago</Text>
                     </View>
                 </View>
+                <View style={{width: '100%', marginBottom: 20,marginTop: 20, paddingTop: 20, borderTopWidth: 1, borderTopColor: 'rgba(236, 236, 236, 1)'}}>
+                    <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                        <Text style={styles.headingText}>Relevant products</Text>
+                        <Pressable><Text style={{fontSize: 14, color: 'rgba(190, 190, 190, 1)', marginRight: 10}}>See all ></Text></Pressable>
+                    </View>
+                    <View style={{marginLeft: 10, marginTop: 20, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                        <View style={{width: 100, height: 140, alignItems: 'center', justifyContent: 'space-evenly', backgroundColor: 'rgba(248, 248, 248, 1)', borderRadius: 10}}>
+                            <Image source={require('../../assets/images/black_headphone.png')} 
+                            style={{width: 50, height: 75}} />
+                            <View style={{width: '100%', marginTop: 5}}>
+                                <Text style={[styles.headingText, {fontSize: 10}]}>Headphone</Text>
+                                <View style={{width: '100%', paddingLeft: 10,marginTop: 5, paddingRight: 10, flexDirection: 'row', justifyContent:'space-between'}}>
+                                    <Text style={[stylesLocal.ratingText, {fontSize: 10}]}>⭐ 4.5</Text>
+                                    <Text style={[styles.headingText, {fontSize: 10}]}>$99</Text>
+                                </View>
+                            </View>
+                        </View>
+                        <View style={{width: 100, height: 140, alignItems: 'center', justifyContent: 'space-evenly', backgroundColor: 'rgba(248, 248, 248, 1)', borderRadius: 10}}>
+                            <Image source={require('../../assets/images/black_headphone.png')} 
+                            style={{width: 50, height: 75}} />
+                            <View style={{width: '100%', marginTop: 5}}>
+                                <Text style={[styles.headingText, {fontSize: 10}]}>Headphone</Text>
+                                <View style={{width: '100%', paddingLeft: 10,marginTop: 5, paddingRight: 10, flexDirection: 'row', justifyContent:'space-between'}}>
+                                    <Text style={[stylesLocal.ratingText, {fontSize: 10}]}>⭐ 4.5</Text>
+                                    <Text style={[styles.headingText, {fontSize: 10}]}>$99</Text>
+                                </View>
+                            </View>
+                        </View>
+                        <View style={{width: 100, height: 140, alignItems: 'center', justifyContent: 'space-evenly', backgroundColor: 'rgba(248, 248, 248, 1)', borderRadius: 10}}>
+                            <Image source={require('../../assets/images/black_headphone.png')} 
+                            style={{width: 50, height: 75}} />
+                            <View style={{width: '100%', marginTop: 5}}>
+                                <Text style={[styles.headingText, {fontSize: 10}]}>Headphone</Text>
+                                <View style={{width: '100%', paddingLeft: 10,marginTop: 5, paddingRight: 10, flexDirection: 'row', justifyContent:'space-between'}}>
+                                    <Text style={[stylesLocal.ratingText, {fontSize: 10}]}>⭐ 4.5</Text>
+                                    <Text style={[styles.headingText, {fontSize: 10}]}>$99</Text>
+                                </View>
+                            </View>
+                        </View>
+                    </View>
+                </View>
+                <View style={{flexDirection:'row', alignItems: 'center', marginLeft: 10}}>
+                    <View style={{width: 40, height: 40, backgroundColor: 'rgba(0, 224, 255, 1)', borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}>
+                        <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/3c09/72f3/ebe516772992a6d99c8158808ee84571?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Mt-WNYxW0kgVxhiscq0v9vYP9-GyTHUYE7GYEDCNs4Oy-~DlGenjm8vCtJ9uDqOHg7HpB1ixc1ox0zmdA9yi8PYaoy599PHeEG7KexNIvBWpXiGGu7Ah-Tc5LEjj-hHDbp3zhdGjFnqniIGmZmY5xYBoUMkPzS0l3TchMf56DInK2dp08C7vFCIMym7hl3AxAbDcN93avsyoS3uuCRzq99d99HmrBe3Ed~ghiHL2GOsv7Id6EPR6l16u--N1r1aqCUVeK6Mk-OkUqRSU2DQIa03r3oIrko00t6ZKB6lrXVt2nnRRaYsWB~dXjV-rsn0AldBQDG0nQrn2Vpq~14PGUw__'}} 
+                        style={{width: 24, height: 24}} />
+                    </View>
+                    <Text style={[stylesLocal.reviewText, {marginLeft: 20, width: '65%'}]}>Notify me of promotions</Text>
+                    <Pressable style={[{width: 40, height: 20, borderRadius: 50, justifyContent: 'center', paddingLeft: 5, paddingRight: 5}, {backgroundColor: noti ? 'rgba(0, 224, 255, 1)' : 'rgba(217, 217, 217, 1)', alignItems: noti ? 'flex-end': 'flex-start'}]}
+                    onPress={()=>setNoti(noti?false:true)} >
+                        <View style={[{width: 16, height: 16, borderRadius: 50, backgroundColor: 'white'}]}></View>
+                    </Pressable>
+                </View>
             </View>
         </ScrollView>
-        <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-evenly', marginTop: 20, paddingTop: 20, borderTopWidth: 1, borderTopColor: 'rgba(236, 236, 236, 1)'}}>
+        <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-evenly', marginBottom: 20,marginTop: 20, paddingTop: 20, borderTopWidth: 1, borderTopColor: 'rgba(236, 236, 236, 1)'}}>
             <Pressable style={{width: 40, height: 40, borderColor: 'rgba(0, 224, 255, 1)', borderWidth: 0.5, borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}>
                 <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/f098/e60e/4b26942409e13aa2c3dda427580702b3?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=q3uVQM0AkMFsyQ9V3G~U1Q7w96fHwnNK2rtXtP7mRVVYti-N1WcO1azHVDoylUSA6A2fiKKtSKNm6ZQzsijW7b1VnCiPv-5sEmgf36t8IR4cTyQDnVKEi6ytaqRVlID2HUHgseKQGFjzAIHhfN8Jn9emyL1VWJIM-88m6VrTlif-n6SHR1zJYao6sX7U2I754mYoGM9AiEFk7BqzK-~ltD44R9JWCECX-O5yV7BuGtg8IGEhoEAlgwdTjDQyJP0CyPIJ7S-xcUXK8FRMNAKofJ7v3oZa8rWh-QgmuudpHilpzYZVlw-zp14KW1f-wvQtbsirCRmUQCw7kn6z9QoarQ__'}} 
                 style={{width: 24, height: 24}}/>
