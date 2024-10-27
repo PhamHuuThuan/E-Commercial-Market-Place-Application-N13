@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   filterText:{
     fontSize: 10,
     color: 'rgba(190, 190, 190, 1)',
-  }
+  },
 });
 
 export default styles;
