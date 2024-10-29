@@ -29,7 +29,7 @@ const Filter = () => {
   return (
     <SafeAreaView style={[styles.container, {alignItems: 'center'}]}>
         <ScrollView>
-            <View style={{width: '100%',flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: 'rgba(236, 236, 236, 1)', paddingBottom: 30, paddingTop: 50}}>
+            <View style={{width: '100%',flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: 'rgba(236, 236, 236, 1)', paddingBottom: 20, paddingTop: 20}}>
                 <Text></Text>
                 <Text style={[styles.headingText, {fontSize: 18}]}>Filters</Text>
                 <Pressable>

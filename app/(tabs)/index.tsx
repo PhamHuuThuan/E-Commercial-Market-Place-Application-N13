@@ -5,13 +5,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ProductList from './ProductListView';
 import ProductDetail1 from './ProductDetail1';
 import Filter from './Filters';
+import Payment from './PayMent';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer independent={true}>
-      <Stack.Navigator initialRouteName="Filter">
+      <Stack.Navigator initialRouteName="Payment">
         <Stack.Screen
           name="ProductList"
           component={ProductList}
@@ -26,6 +27,11 @@ export default function App() {
           name="Filter"
           component={Filter}
           options={{ headerShown: false}} // Ẩn tên màn hình
+        />
+        <Stack.Screen 
+          name="Payment"
+          component={Payment}
+          options={{ headerShown: false }} // Ẩn 
         />
       </Stack.Navigator>
     </NavigationContainer>
