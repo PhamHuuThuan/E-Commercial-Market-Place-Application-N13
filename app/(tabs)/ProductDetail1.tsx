@@ -169,7 +169,7 @@ const ProductDetail = () => {
                         </View>
                     </View>
                 </View>
-                <View style={{flexDirection:'row', alignItems: 'center', marginLeft: 10}}>
+                <View style={{flexDirection:'row', alignItems: 'center', marginLeft: 10, paddingBottom: 20}}>
                     <View style={{width: 40, height: 40, backgroundColor: 'rgba(0, 224, 255, 1)', borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}>
                         <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/3c09/72f3/ebe516772992a6d99c8158808ee84571?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Mt-WNYxW0kgVxhiscq0v9vYP9-GyTHUYE7GYEDCNs4Oy-~DlGenjm8vCtJ9uDqOHg7HpB1ixc1ox0zmdA9yi8PYaoy599PHeEG7KexNIvBWpXiGGu7Ah-Tc5LEjj-hHDbp3zhdGjFnqniIGmZmY5xYBoUMkPzS0l3TchMf56DInK2dp08C7vFCIMym7hl3AxAbDcN93avsyoS3uuCRzq99d99HmrBe3Ed~ghiHL2GOsv7Id6EPR6l16u--N1r1aqCUVeK6Mk-OkUqRSU2DQIa03r3oIrko00t6ZKB6lrXVt2nnRRaYsWB~dXjV-rsn0AldBQDG0nQrn2Vpq~14PGUw__'}} 
                         style={{width: 24, height: 24}} />
@@ -182,7 +182,7 @@ const ProductDetail = () => {
                 </View>
             </View>
         </ScrollView>
-        <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-evenly', marginBottom: 20,marginTop: 20, paddingTop: 20, borderTopWidth: 1, borderTopColor: 'rgba(236, 236, 236, 1)'}}>
+        <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-evenly', marginBottom: 20, paddingTop: 20, borderTopWidth: 1, borderTopColor: 'rgba(236, 236, 236, 1)'}}>
             <Pressable style={{width: 40, height: 40, borderColor: 'rgba(0, 224, 255, 1)', borderWidth: 0.5, borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}>
                 <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/f098/e60e/4b26942409e13aa2c3dda427580702b3?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=q3uVQM0AkMFsyQ9V3G~U1Q7w96fHwnNK2rtXtP7mRVVYti-N1WcO1azHVDoylUSA6A2fiKKtSKNm6ZQzsijW7b1VnCiPv-5sEmgf36t8IR4cTyQDnVKEi6ytaqRVlID2HUHgseKQGFjzAIHhfN8Jn9emyL1VWJIM-88m6VrTlif-n6SHR1zJYao6sX7U2I754mYoGM9AiEFk7BqzK-~ltD44R9JWCECX-O5yV7BuGtg8IGEhoEAlgwdTjDQyJP0CyPIJ7S-xcUXK8FRMNAKofJ7v3oZa8rWh-QgmuudpHilpzYZVlw-zp14KW1f-wvQtbsirCRmUQCw7kn6z9QoarQ__'}} 
                 style={{width: 24, height: 24}}/>

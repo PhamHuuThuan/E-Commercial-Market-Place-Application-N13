@@ -4,13 +4,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ProductList from './ProductListView';
 import ProductDetail1 from './ProductDetail1';
+import Filter from './Filters';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer independent={true}>
-      <Stack.Navigator initialRouteName="ProductDetail1">
+      <Stack.Navigator initialRouteName="Filter">
         <Stack.Screen
           name="ProductList"
           component={ProductList}
@@ -19,6 +20,11 @@ export default function App() {
         <Stack.Screen
           name="ProductDetail1"
           component={ProductDetail1}
+          options={{ headerShown: false}} // Ẩn tên màn hình
+        />
+        <Stack.Screen
+          name="Filter"
+          component={Filter}
           options={{ headerShown: false}} // Ẩn tên màn hình
         />
       </Stack.Navigator>
