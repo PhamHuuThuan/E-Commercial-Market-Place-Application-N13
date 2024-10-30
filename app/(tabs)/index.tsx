@@ -6,13 +6,14 @@ import ProductList from './ProductListView';
 import ProductDetail1 from './ProductDetail1';
 import Filter from './Filters';
 import Payment from './PayMent';
+import ProductFeedback from './ProductFeedback';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer independent={true}>
-      <Stack.Navigator initialRouteName="Payment">
+      <Stack.Navigator initialRouteName="ProductFeedback">
         <Stack.Screen
           name="ProductList"
           component={ProductList}
@@ -32,6 +33,11 @@ export default function App() {
           name="Payment"
           component={Payment}
           options={{ headerShown: false }} // Ẩn 
+        />
+        <Stack.Screen 
+          name="ProductFeedback"
+          component={ProductFeedback}
+          options={{ headerShown: false }} // Ẩn
         />
       </Stack.Navigator>
     </NavigationContainer>
