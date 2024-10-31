@@ -11,3 +11,7 @@
 
 ### Payment Screen
 ![image](https://github.com/user-attachments/assets/dcdfcb3f-aa70-44eb-8ff3-06fcbeb4b2a4)
+
+### Feedbacks Screen
+![image](https://github.com/user-attachments/assets/d53ccff5-90b2-4dea-a627-908e09ff6650)
+

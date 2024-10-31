@@ -6,18 +6,22 @@ import ProductList from './ProductListView';
 import ProductDetail1 from './ProductDetail1';
 import Filter from './Filters';
 import Payment from './PayMent';
+<<<<<<< HEAD
 import ProductListing_GridView from './ProductListingGridView';
 import ProductDetail2 from './ProductDetail2';
 import HomeProductListing from './HomeProductListing';
 import CheckoutPayment from './CheckoutPaymentSuccess';
 import CheckoutCard from './CheckoutCart';
+=======
+import ProductFeedback from './ProductFeedback';
+>>>>>>> 495469db133aa79eddc03f6e7e789e8f4247fd67
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer independent={true}>
-      <Stack.Navigator initialRouteName="Payment">
+      <Stack.Navigator initialRouteName="ProductFeedback">
         <Stack.Screen
           name="ProductList"
           component={ProductList}
@@ -38,6 +42,7 @@ export default function App() {
           component={Payment}
           options={{ headerShown: false }} // Ẩn 
         />
+<<<<<<< HEAD
 
         <Stack.Screen
           name="ProductListing-GridView"
@@ -65,6 +70,13 @@ export default function App() {
           options={{ headerShown: false}}
         />
 
+=======
+        <Stack.Screen 
+          name="ProductFeedback"
+          component={ProductFeedback}
+          options={{ headerShown: false }} // Ẩn
+        />
+>>>>>>> 495469db133aa79eddc03f6e7e789e8f4247fd67
       </Stack.Navigator>
     </NavigationContainer>
   );
