@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable, Image, SafeAreaView, ScrollView } from 'react-native';
 import styles from '../styles/style';
 
 const CheckoutPayment = () => {
+  const [rating, setRating] = useState(0);
+
+  const handleStarPress = (index: number) => {
+    setRating(index + 1);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={stylesLocal.scrollContainer}>
@@ -56,11 +62,14 @@ const CheckoutPayment = () => {
           <Text style={stylesLocal.experienceTitle}>How was your experience?</Text>
           <View style={stylesLocal.starsContainer}>
             {[...Array(5)].map((_, index) => (
-              <Image 
-                key={index} 
-                source={require('../../assets/image/star-filled.png')}
-                style={stylesLocal.starIcon} 
-              />
+              <Pressable key={index} onPress={() => handleStarPress(index)}>
+                <Image 
+                  source={rating > index 
+                    ? require('../../assets/image/star-filled.png') 
+                    : require('../../assets/image/star-outline.png')}
+                  style={stylesLocal.starIcon} 
+                />
+              </Pressable>
             ))}
           </View>
         </View>
@@ -176,8 +185,8 @@ const stylesLocal = StyleSheet.create({
     marginTop: 10,
   },
   starIcon: {
-    width: 25,
-    height: 25,
+    width: 40,
+    height: 40,
     marginHorizontal: 2,
   },
   addToCartButton: {

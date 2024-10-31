@@ -19,7 +19,7 @@ export default function App() {
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator initialRouteName="ProductFeedback">
-        <Stack.Screen
+        {/* <Stack.Screen
           name="ProductList"
           component={ProductList}
           options={{ headerShown: false}} // Ẩn tên màn hình
@@ -44,7 +44,7 @@ export default function App() {
           component={ProductFeedback}
           options={{ headerShown: false }} // Ẩn
         />
-        
+
         <Stack.Screen
           name="ProductListing-GridView"
           component={ProductListing_GridView}
@@ -59,17 +59,17 @@ export default function App() {
           name="HomeProductListing"
           component={HomeProductListing}
           options={{ headerShown: false}}
-        />
+        /> */}
         <Stack.Screen
           name="CheckoutPayment"
           component={CheckoutPayment}
           options={{ headerShown: false}}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="CheckoutCard"
           component={CheckoutCard}
           options={{ headerShown: false}}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
