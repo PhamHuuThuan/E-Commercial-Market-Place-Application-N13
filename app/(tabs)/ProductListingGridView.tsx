@@ -219,10 +219,9 @@ const stylesLocal = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    paddingHorizontal: 10,
   },
   productName: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
   },
   addButton: {
@@ -241,19 +240,17 @@ const stylesLocal = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    paddingHorizontal: 10,
     marginTop: 5,
   },
   ratingContainer: {
     flexDirection: 'row',
   },
   starIcon: {
-    width: 16,
-    height: 16,
-    marginHorizontal: 1,
+    width: 15,
+    height: 15,
   },
   productPrice: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
   },
   seeAllButton: {

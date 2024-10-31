@@ -43,14 +43,14 @@ export default function App() {
           name="ProductFeedback"
           component={ProductFeedback}
           options={{ headerShown: false }} // Ẩn
-        />
+        /> */}
 
         <Stack.Screen
           name="ProductListing-GridView"
           component={ProductListing_GridView}
           options={{ headerShown: false}}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="ProductDetail2"
           component={ProductDetail2}
           options={{ headerShown: false}}
@@ -59,13 +59,14 @@ export default function App() {
           name="HomeProductListing"
           component={HomeProductListing}
           options={{ headerShown: false}}
-        /> */}
+        />
+        
         <Stack.Screen
           name="CheckoutPayment"
           component={CheckoutPayment}
           options={{ headerShown: false}}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name="CheckoutCard"
           component={CheckoutCard}
           options={{ headerShown: false}}
