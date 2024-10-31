@@ -39,7 +39,12 @@ export default function App() {
           component={Payment}
           options={{ headerShown: false }} // Ẩn 
         />
-
+        <Stack.Screen 
+          name="ProductFeedback"
+          component={ProductFeedback}
+          options={{ headerShown: false }} // Ẩn
+        />
+        
         <Stack.Screen
           name="ProductListing-GridView"
           component={ProductListing_GridView}
@@ -64,11 +69,6 @@ export default function App() {
           name="CheckoutCard"
           component={CheckoutCard}
           options={{ headerShown: false}}
-        />
-        <Stack.Screen 
-          name="ProductFeedback"
-          component={ProductFeedback}
-          options={{ headerShown: false }} // Ẩn
         />
       </Stack.Navigator>
     </NavigationContainer>
