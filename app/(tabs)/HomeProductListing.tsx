@@ -20,7 +20,7 @@ const products = [
   {
     id: 3,
     name: 'Shoes 3',
-    image: require('../../assets/image/listShoes1.png'),
+    image: require('../../assets/image/listShoes2.png'),
     rating: 5.0,
     price: '$299',
   },
@@ -119,7 +119,6 @@ const ProductListing = () => {
           </Pressable>
         </View>
 
-        {/* Product Listing Section */}
         <View style={stylesLocal.productContainer}>
           {(showAll ? products : products.slice(0, 2)).map(product => (
             <View key={product.id} style={stylesLocal.productBox}>
