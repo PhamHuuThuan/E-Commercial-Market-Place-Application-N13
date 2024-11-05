@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer independent={true}>
-      <Stack.Navigator initialRouteName="ProductFeedback">
+      <Stack.Navigator initialRouteName="ProductList">
         <Stack.Screen
           name="ProductList"
           component={ProductList}
