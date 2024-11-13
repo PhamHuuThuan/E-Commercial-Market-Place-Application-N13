@@ -11,7 +11,7 @@ const RailSelected = () => <View style={stylesLocal.railSelected} />;
 const Label = ({ text }) => <Text style={stylesLocal.label}>{text}</Text>;
 const Notch = () => <View style={stylesLocal.notch} />;
 
-const Filter = () => {
+const Filter = ({ onClose }) => {
     const [rating, setRating] = useState(0);
     const [low, setLow] = useState(0);
     const [high, setHigh] = useState(1000000000);
@@ -32,7 +32,8 @@ const Filter = () => {
             <View style={{width: '100%',flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: 'rgba(236, 236, 236, 1)', paddingBottom: 20, paddingTop: 20}}>
                 <Text></Text>
                 <Text style={[styles.headingText, {fontSize: 18}]}>Filters</Text>
-                <Pressable>
+                <Pressable
+                onPress={onClose}>
                     <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/e72a/8d03/825cfc72c7ac46f8807fa9e433f687cb?Expires=1731283200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cT-xPumpTjxkHyu5raF1LUC4Um70oXqB0~jVu86W54yEL6h3m8lP3Oc2p9f~ejihWXFwbNZ1RsAFK3uLCYXfkZUXfuQxZfgvRwMFbtmMxDiHYtTVkpLaQdLs~DmW8dvJQmCkPwLC2J6dEGyKfYDYR0DZx1l0AsH414vGmtVxfIMfWXoMZ-bg5ie-gdOuwKay72nbRk0VaUgWrm8dBT5wE9EIx2reW30pxEJDzh2IntYfLhzjdvOFxyxqmL8x68HnsqG8x9FYE4wh1aBEkEMBFJCFtcI8~EEZKVctCw8QtbtQn4dQPVC9wJBomFNLxNuyv8YvI4N-N88Xa21wI5Il8g__'}}
                     style={{width: 16, height: 16, marginRight: 20}}/>
                 </Pressable>
