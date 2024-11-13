@@ -157,7 +157,7 @@ const ProductListing = ({ navigation }) => {
 
   const renderPhoneItem = ({ item }) => (
     <Pressable style={stylesLocal.phoneCard}
-    onPress={() => navigation.navigate('ProductDetail1')}>
+    onPress={() => navigation.navigate('ProductDetail1', { product: item })}>
       <Image source={{uri: item.image}} style={stylesLocal.phoneImage} />
       <View style={stylesLocal.phoneInfo}>
         <Text style={stylesLocal.phoneName}>{item.name}</Text>
@@ -189,7 +189,7 @@ const ProductListing = ({ navigation }) => {
           <Pressable style={{position: 'relative'}}
           onPress={() => setCartVisible(true)} style={stylesLocal.cartButton}>
             <View style={{position: 'absolute', top: -10, right: 10, backgroundColor: 'red', width: cartItems.length<10?15:25, height: 20, borderRadius: 20, justifyContent: 'center', alignItems: 'center'}}>
-            <Text style={{color: 'white', fontWeight: 'bold'}}>{cartItems.length}</Text>
+              <Text style={{color: 'white', fontWeight: 'bold'}}>{cartItems.length}</Text>
             </View>
             <Image source={require('../../assets/images/cart.png')} style={[styles.direcBtn, { marginRight: 20 }]} />
           </Pressable>
