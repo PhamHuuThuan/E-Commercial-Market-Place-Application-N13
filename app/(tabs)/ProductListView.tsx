@@ -29,6 +29,7 @@ const ProductListing = ({ navigation }) => {
   const [showAll, setShowAll] = useState(false);
   const [cartVisible, setCartVisible] = useState(false);
   const [total, setTotal] = useState(0);
+  const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
     // Tính tổng giá trị giỏ hàng mỗi khi cartItems thay đổi
@@ -64,8 +65,11 @@ const ProductListing = ({ navigation }) => {
   }, []);
 
   const filteredProducts = products.filter(product => {
-    return (!selectedCategory || product.category === selectedCategory) &&
-           (!selectedType || product.type === selectedType);
+    const matchesCategory = !selectedCategory || product.category === selectedCategory;
+    const matchesType = !selectedType || product.type === selectedType;
+    const matchesSearchText = product.name.toLowerCase().includes(searchText.toLowerCase());
+  
+    return matchesCategory && matchesType && matchesSearchText;
   });
 
   const productsToShow = showAll ? filteredProducts : filteredProducts.slice(0, 4);
@@ -201,7 +205,9 @@ const ProductListing = ({ navigation }) => {
       <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 20 }}>
         <View style={stylesLocal.formSearch}>
           <Image source={require('../../assets/images/search.png')} style={{ width: 16, height: 16 }} />
-          <TextInput placeholder='Search' style={{ width: '90%' }} />
+          <TextInput placeholder='Search' style={{ width: '90%' }} 
+          value={searchText}
+          onChangeText={setSearchText} />
         </View>
         <Pressable>
           <Image source={require('../../assets/images/sort.png')} style={[styles.direcBtn, { backgroundColor: '#F1F1F1', marginLeft: 20 }]} />
