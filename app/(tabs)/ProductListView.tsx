@@ -114,6 +114,7 @@ const ProductListing = ({ navigation }) => {
     </Pressable>
   );
 
+  //
   const renderHeader = () => (
     <>
       <View style={{ flexDirection: 'row', alignItems: 'center', width: '100%', justifyContent: 'space-between', marginBottom: 20 }}>
