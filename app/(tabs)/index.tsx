@@ -20,7 +20,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const CustomTabBar = ({ navigation }) => {
-  const [selectedTab, setSelectedTab] = useState('ProductListing_GridView');
+  const [selectedTab, setSelectedTab] = useState('HomeProductListing');
 
   const handleTabPress = (routeName) => {
     setSelectedTab(routeName);
@@ -33,10 +33,10 @@ const CustomTabBar = ({ navigation }) => {
 
   return (
     <View style={styles.tabBar}>
-      <TouchableOpacity onPress={() => handleTabPress('ProductListing_GridView')}>
+      <TouchableOpacity onPress={() => handleTabPress('HomeProductListing')}>
         <View style={{ alignItems: 'center' }}>
-          <Icon name="home" size={24} color={getTabColor('ProductListing_GridView')} />
-          <Text style={{ color: getTabColor('ProductListing_GridView') }}>Home</Text>
+          <Icon name="home" size={24} color={getTabColor('HomeProductListing')} />
+          <Text style={{ color: getTabColor('HomeProductListing') }}>Home</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => handleTabPress('Filter')}>
@@ -70,7 +70,7 @@ const CustomTabBar = ({ navigation }) => {
 // Định nghĩa các màn hình trong Tab.Navigator
 const TabScreen = () => (
   <Tab.Navigator tabBar={(props) => <CustomTabBar {...props} />} screenOptions={{ headerShown: false }}>
-    <Tab.Screen name="ProductListing_GridView" component={ProductListing_GridView} />
+    <Tab.Screen name="HomeProductListing" component={HomeProductListing} />
     <Tab.Screen name="Filter" component={Filter} />
     <Tab.Screen name="Payment" component={Payment} />
     <Tab.Screen name="CheckoutCard" component={CheckoutCard} />
@@ -108,8 +108,8 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="HomeProductListing"
-          component={HomeProductListing}
+          name="ProductListing_GridView"
+          component={ProductListing_GridView}
           options={{ headerShown: false }}
         />
         <Stack.Screen

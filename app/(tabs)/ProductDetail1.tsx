@@ -2,14 +2,15 @@ import React, { useState, useRef } from 'react';
 import { View, Text, StyleSheet, Pressable, Image, TextInput, SafeAreaView, Dimensions, FlatList, ScrollView } from 'react-native';
 import styles from '../styles/style';
 
-const ProductDetail = () => {
+const ProductDetail = ({ navigation }) => {
     const [noti, setNoti] = useState(false);
 
   return (
     <SafeAreaView style={[styles.container, {alignItems: 'center'}]}>
         <View style={{ flexDirection: 'row', alignItems: 'center', width: '100%', justifyContent: 'space-between', marginBottom: 20 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Pressable>
+            <Pressable
+            onPress={()=>{navigation.goBack()}}>
                 <Image source={require('../../assets/images/left-chevron.png')} style={styles.direcBtn} />
             </Pressable>
             <Text style={styles.headingText}>Headphone</Text>
@@ -187,7 +188,8 @@ const ProductDetail = () => {
                 <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/f098/e60e/4b26942409e13aa2c3dda427580702b3?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=q3uVQM0AkMFsyQ9V3G~U1Q7w96fHwnNK2rtXtP7mRVVYti-N1WcO1azHVDoylUSA6A2fiKKtSKNm6ZQzsijW7b1VnCiPv-5sEmgf36t8IR4cTyQDnVKEi6ytaqRVlID2HUHgseKQGFjzAIHhfN8Jn9emyL1VWJIM-88m6VrTlif-n6SHR1zJYao6sX7U2I754mYoGM9AiEFk7BqzK-~ltD44R9JWCECX-O5yV7BuGtg8IGEhoEAlgwdTjDQyJP0CyPIJ7S-xcUXK8FRMNAKofJ7v3oZa8rWh-QgmuudpHilpzYZVlw-zp14KW1f-wvQtbsirCRmUQCw7kn6z9QoarQ__'}} 
                 style={{width: 24, height: 24}}/>
             </Pressable>
-            <Pressable style={{height: 40, width: '70%', backgroundColor: 'rgba(0, 224, 255, 1)', borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}>
+            <Pressable style={{height: 40, width: '70%', backgroundColor: 'rgba(0, 224, 255, 1)', borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}
+            onPress={() => navigation.navigate('ProductDetail2')}>
                 <Text style={{color: 'white'}}>Buy now</Text>
             </Pressable>
         </View>

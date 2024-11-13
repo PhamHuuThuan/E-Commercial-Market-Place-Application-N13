@@ -1,43 +1,8 @@
-import React, { useState, useRef } from 'react';
-import { View, Text, StyleSheet, Pressable, Image, TextInput, SafeAreaView, Dimensions, FlatList, ScrollView } from 'react-native';
+import React, { useState, useRef, useEffect } from 'react';
+import { View, Text, StyleSheet, Pressable, Image, TextInput, SafeAreaView, Dimensions, FlatList, ScrollView, ActivityIndicator } from 'react-native';
 import styles from '../styles/style';
 
 const { width: viewportWidth } = Dimensions.get('window');
-
-const phones = [
-  {
-    id: 1,
-    name: 'iPhone 15 Pro',
-    rating: 4.5,
-    reviews: 1200,
-    price: '$999',
-    image: require('../../assets/images/Apple-Iphone-15.png'),
-  },
-  {
-    id: 2,
-    name: 'Samsung Galaxy S23',
-    rating: 4.7,
-    reviews: 950,
-    price: '$899',
-    image: require('../../assets/images/Apple-Iphone-15.png'),
-  },
-  {
-    id: 3,
-    name: 'Google Pixel 8',
-    rating: 4.6,
-    reviews: 800,
-    price: '$799',
-    image: require('../../assets/images/Apple-Iphone-15.png'),
-  },
-  {
-    id: 4,
-    name: 'OnePlus 12',
-    rating: 4.4,
-    reviews: 600,
-    price: '$749',
-    image: require('../../assets/images/Apple-Iphone-15.png'),
-  },
-];
 
 const banners = [
   { id: 1, image: require('../../assets/images/iPhone_16.jpg') },
@@ -46,33 +11,94 @@ const banners = [
   { id: 4, image: require('../../assets/images/ipad.png') },
 ];
 
-const ProductListing = () => {
+const viewConfigRef = { viewAreaCoveragePercentThreshold: 50 };
+const onViewRef = ({ viewableItems }) => {
+  if (viewableItems.length > 0) {
+    setActiveSlide(viewableItems[0].index);
+  }
+};
+
+const ProductListing = ({ navigation }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const flatListRef = useRef(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedType, setSelectedType] = useState(null);
+  const [products, setProducts] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [showAll, setShowAll] = useState(false);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [productsResponse, cartResponse] = await Promise.all([
+          fetch('https://api.mockfly.dev/mocks/551e2234-6785-4d2c-812e-265d0239a339/ProductsElectronics'),
+          fetch('https://api.mockfly.dev/mocks/551e2234-6785-4d2c-812e-265d0239a339/carts')
+        ]);
+
+        const productsData = await productsResponse.json();
+        const cartData = await cartResponse.json();
+
+        setProducts(productsData);
+        setCartItems(cartData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const filteredProducts = products.filter(product => {
+    return (!selectedCategory || product.category === selectedCategory) &&
+           (!selectedType || product.type === selectedType);
+  });
+
+  const productsToShow = showAll ? filteredProducts : filteredProducts.slice(0, 4);
+
+  const addToCart = async (item) => {
+    const cartItem = {
+      id: item.id,
+      name: item.name,
+      quantity: 1, // Initial quantity
+      price: item.price,
+    };
+  
+    try {
+      const response = await fetch('https://api.mockfly.dev/mocks/551e2234-6785-4d2c-812e-265d0239a339/carts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cartItem),
+      });
+  
+      if (response.ok) {
+        const newItem = await response.json();
+        setCartItems((prevItems) => [...prevItems, newItem]);
+      } else {
+        console.error('Failed to add item to cart:', response.status);
+      }
+    } catch (error) {
+      console.error('Error adding item to cart:', error);
+    }
+  };
+
+  if (loading) {
+    return <ActivityIndicator size="large" color="#0000ff" />;
+  }
   const renderItem = ({ item }) => (
     <View style={stylesLocal.slide}>
       <Image source={item.image} style={stylesLocal.bannerImage} />
     </View>
   );
 
-  const onViewRef = useRef(({ viewableItems }) => {
-    if (viewableItems.length > 0) {
-      setActiveSlide(viewableItems.index);
-    }
-  });
-
-  const viewConfigRef = useRef({ viewAreaCoveragePercentThreshold: 50 });
-
-  const [cart, setCart] = useState([]);
-
-  const addToCart = (phone) => {
-    setCart([...cart, phone]);
-  };
-
   const renderPhoneItem = ({ item }) => (
-    <View style={stylesLocal.phoneCard}>
-      <Image source={item.image} style={stylesLocal.phoneImage} />
+    <Pressable style={stylesLocal.phoneCard}
+    onPress={() => navigation.navigate('ProductDetail1')}>
+      <Image source={{uri: item.image}} style={stylesLocal.phoneImage} />
       <View style={stylesLocal.phoneInfo}>
         <Text style={stylesLocal.phoneName}>{item.name}</Text>
         <View style={stylesLocal.ratingContainer}>
@@ -81,23 +107,29 @@ const ProductListing = () => {
         </View>
       </View>
       <Text style={stylesLocal.phonePrice}>{item.price}</Text>
-      <Pressable style={stylesLocal.addButton} onPress={() => addToCart(item)}>
+      <Pressable style={stylesLocal.addButton} 
+      onPress={()=>{addToCart(item)}}>
         <Text style={stylesLocal.addButtonText}>+</Text>
       </Pressable>
-    </View>
+    </Pressable>
   );
 
+  //
   const renderHeader = () => (
     <>
       <View style={{ flexDirection: 'row', alignItems: 'center', width: '100%', justifyContent: 'space-between', marginBottom: 20 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Pressable>
+          <Pressable
+          onPress={() => navigation.goBack()}>
             <Image source={require('../../assets/images/left-chevron.png')} style={styles.direcBtn} />
           </Pressable>
           <Text style={styles.headingText}>Electronics</Text>
         </View>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Pressable>
+          <Pressable style={{position: 'relative'}}>
+            <View style={{position: 'absolute', top: -10, right: 10, backgroundColor: 'red', width: cartItems.length<10?15:25, height: 20, borderRadius: 20, justifyContent: 'center', alignItems: 'center'}}>
+            <Text style={{color: 'white', fontWeight: 'bold'}}>{cartItems.length}</Text>
+            </View>
             <Image source={require('../../assets/images/cart.png')} style={[styles.direcBtn, { marginRight: 20 }]} />
           </Pressable>
           <Pressable>
@@ -125,28 +157,74 @@ const ProductListing = () => {
           </Pressable>
         </View>
         <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', marginTop: 20 }}>
-          <View style={[styles.typeProduct, { backgroundColor: '#DFC0FF' }]}>
+          <Pressable 
+            style={[
+              styles.typeProduct, 
+              { 
+                backgroundColor: '#DFC0FF', 
+                borderWidth: selectedCategory === "phone" ? 2 : 0, 
+                borderColor: selectedCategory === "phone" ? '#28a745' : 'transparent',
+                borderRadius: 5 
+              }
+            ]}
+            onPress={() => setSelectedCategory("phone")}
+          >
             <Image source={require('../../assets/images/Apple-Iphone-15.png')} style={{ width: 60, height: 65 }} />
-          </View>
-          <View style={[styles.typeProduct, { backgroundColor: '#B5DFF9' }]}>
+          </Pressable>
+
+          <Pressable 
+            style={[
+              styles.typeProduct, 
+              { 
+                backgroundColor: '#B5DFF9', 
+                borderWidth: selectedCategory === "ipad" ? 2 : 0, 
+                borderColor: selectedCategory === "ipad" ? '#28a745' : 'transparent',
+                borderRadius: 5 
+              }
+            ]}
+            onPress={() => setSelectedCategory("ipad")}
+          >
             <Image source={require('../../assets/images/ipad.png')} style={{ width: 60, height: 65 }} />
-          </View>
-          <View style={[styles.typeProduct, { backgroundColor: '#F6BCAE' }]}>
+          </Pressable>
+
+          <Pressable 
+            style={[
+              styles.typeProduct, 
+              { 
+                backgroundColor: '#F6BCAE', 
+                borderWidth: selectedCategory === "macbook" ? 2 : 0, 
+                borderColor: selectedCategory === "macbook" ? '#28a745' : 'transparent',
+                borderRadius: 5 
+              }
+            ]}
+            onPress={() => setSelectedCategory("macbook")}
+          >
             <Image source={require('../../assets/images/macbook.png')} style={{ width: 80, height: 50 }} />
-          </View>
+          </Pressable>
         </View>
         <View style={{ marginTop: 20, alignItems: 'center' }}>
-          <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
-            <Pressable style={[styles.filterBtn, { backgroundColor: 'rgba(122, 228, 240, 0.2)' }]}>
-              <Text style={[styles.filterText, { color: 'rgba(0, 208, 255, 1)', fontWeight: 'bold' }]}>Best Sales</Text>
-            </Pressable>
-            <Pressable style={styles.filterBtn}>
-              <Text style={styles.filterText}>Best Matched</Text>
-            </Pressable>
-            <Pressable style={styles.filterBtn}>
-              <Text style={styles.filterText}>Popular</Text>
-            </Pressable>
-          </View>
+        <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
+          <Pressable
+            style={[styles.filterBtn, selectedType === "Best Sales" && { backgroundColor: 'rgba(122, 228, 240, 0.2)' }]}
+            onPress={() => setSelectedType("Best Sales")}
+          >
+            <Text style={[styles.filterText, selectedType === "Best Sales" && { color: 'rgba(0, 208, 255, 1)', fontWeight: 'bold' }]}>Best Sales</Text>
+          </Pressable>
+
+          <Pressable
+            style={[styles.filterBtn, selectedType === "Best Matched" && { backgroundColor: 'rgba(122, 228, 240, 0.2)' }]}
+            onPress={() => setSelectedType("Best Matched")}
+          >
+            <Text style={[styles.filterText, selectedType === "Best Matched" && { color: 'rgba(0, 208, 255, 1)', fontWeight: 'bold' }]}>Best Matched</Text>
+          </Pressable>
+
+          <Pressable
+            style={[styles.filterBtn, selectedType === "Popular" && { backgroundColor: 'rgba(122, 228, 240, 0.2)' }]}
+            onPress={() => setSelectedType("Popular")}
+          >
+            <Text style={[styles.filterText, selectedType === "Popular" && { color: 'rgba(0, 208, 255, 1)', fontWeight: 'bold' }]}>Popular</Text>
+          </Pressable>
+        </View>
         </View>
       </View>
     </>
@@ -155,15 +233,22 @@ const ProductListing = () => {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={phones}
+        data={productsToShow}
         renderItem={renderPhoneItem}
         keyExtractor={(item) => item.id.toString()}
         ListHeaderComponent={renderHeader}
         ListFooterComponent={() => (
-          <View style={{alignItems: 'center'}}>
-            <Pressable style={{ width: 350, height: 30, backgroundColor: 'rgba(244, 244, 244, 1)', justifyContent: 'center', alignItems: 'center', borderRadius: 5, marginTop: 20}}>
-                <Text style={{ fontSize: 16, fontWeight: '500', color: 'rgba(190, 190, 190, 1)' }}>See all</Text>
+          <View style={{ alignItems: 'center' }}>
+          {filteredProducts.length > 4 && (
+            <Pressable
+              style={{ width: 350, height: 30, backgroundColor: 'rgba(244, 244, 244, 1)', justifyContent: 'center', alignItems: 'center', borderRadius: 5, marginTop: 20 }}
+              onPress={() => setShowAll(!showAll)} // Toggle the showAll state
+            >
+              <Text style={{ fontSize: 16, fontWeight: '500', color: 'rgba(190, 190, 190, 1)' }}>
+                {showAll ? 'Show Less' : 'See All'}
+              </Text>
             </Pressable>
+          )}
             <FlatList
               data={banners}
               renderItem={renderItem}
