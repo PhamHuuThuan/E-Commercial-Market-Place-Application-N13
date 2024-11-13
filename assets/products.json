@@ -1,0 +1,304 @@
+[
+    {
+      "id": 1,
+      "name": "iPhone 15 Pro",
+      "rating": 4.5,
+      "reviews": 1200,
+      "price": 999,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "image1": "https://lh3.googleusercontent.com/pw/AP1GczNDSfjnMt9BjKp__1XL3iuUqy8GYUyHV0Q6ROzw2qIv_0jqLsOemX9oHcX9GzhcATlMMXEYDcM1BPLt7qV0-SMyJa1XrGMtX5_JXAXiOi4sdzKd7ebcqdknN1iy659eGzPahGaFHpfgVS4SveuWkSFy=w1000-h667-s-no-gm?authuser=0",
+      "category": "phone",
+      "type": "Best Sales",
+      "description": "Quis occaecat magna elit magna do nisi ipsum amet excepteur tempor nisi exercitation qui..."
+    },
+    {
+      "id": 2,
+      "name": "iPad Pro 12.9",
+      "rating": 4.8,
+      "reviews": 1100,
+      "price": 1099,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczNE56gTn0O5R8vduulshR014mtNQQ_LUZ3sBz-AejQPbnW1M-MrqQ7ex1D8k9SwgomRZsFYVjs1BaSXFdbrIb0mBckUxSyvkc3R3nz-LIrIcxAUw9mtv0MwQRQ4UfS-denK47RXbU06cxNGB7-mm7vA=w370-h370-s-no-gm",
+      "category": "ipad",
+      "type": "Popular"
+    },
+    {
+      "id": 3,
+      "name": "MacBook Pro 16",
+      "rating": 4.7,
+      "reviews": 950,
+      "price": 2399,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczM4ElhcWcMiR9BCdVIyvT_z0M_VJeOEVUOe7seMOwErtkj_vEMB2o4YX1usiy6BBrGiIjQbQuGX_uoznoVRcFXDS18mrsVZf_8n6rOJpXagWl2caDGWVvi4inYNWfsYsTh_JVd_pG7HxPwl-AUTCSuF=w360-h216-s-no-gm",
+      "category": "macbook",
+      "type": "Best Matched"
+    },
+    {
+      "id": 4,
+      "name": "Samsung Galaxy S23",
+      "rating": 4.3,
+      "reviews": 800,
+      "price": 799,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Popular"
+    },
+    {
+      "id": 5,
+      "name": "Surface Pro 9",
+      "rating": 4.6,
+      "reviews": 700,
+      "price": 999,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczNE56gTn0O5R8vduulshR014mtNQQ_LUZ3sBz-AejQPbnW1M-MrqQ7ex1D8k9SwgomRZsFYVjs1BaSXFdbrIb0mBckUxSyvkc3R3nz-LIrIcxAUw9mtv0MwQRQ4UfS-denK47RXbU06cxNGB7-mm7vA=w370-h370-s-no-gm",
+      "category": "ipad",
+      "type": "Best Sales"
+    },
+    {
+      "id": 6,
+      "name": "MacBook Air M2",
+      "rating": 4.7,
+      "reviews": 1200,
+      "price": 1199,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczM4ElhcWcMiR9BCdVIyvT_z0M_VJeOEVUOe7seMOwErtkj_vEMB2o4YX1usiy6BBrGiIjQbQuGX_uoznoVRcFXDS18mrsVZf_8n6rOJpXagWl2caDGWVvi4inYNWfsYsTh_JVd_pG7HxPwl-AUTCSuF=w360-h216-s-no-gm",
+      "category": "macbook",
+      "type": "Best Matched"
+    },
+    {
+      "id": 7,
+      "name": "Google Pixel 8",
+      "rating": 4.4,
+      "reviews": 650,
+      "price": 799,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Popular"
+    },
+    {
+      "id": 8,
+      "name": "iPad Air 5",
+      "rating": 4.5,
+      "reviews": 900,
+      "price": 599,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczNE56gTn0O5R8vduulshR014mtNQQ_LUZ3sBz-AejQPbnW1M-MrqQ7ex1D8k9SwgomRZsFYVjs1BaSXFdbrIb0mBckUxSyvkc3R3nz-LIrIcxAUw9mtv0MwQRQ4UfS-denK47RXbU06cxNGB7-mm7vA=w370-h370-s-no-gm",
+      "category": "ipad",
+      "type": "Best Matched"
+    },
+    {
+      "id": 9,
+      "name": "MacBook Pro M1",
+      "rating": 4.7,
+      "reviews": 1300,
+      "price": 1499,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczM4ElhcWcMiR9BCdVIyvT_z0M_VJeOEVUOe7seMOwErtkj_vEMB2o4YX1usiy6BBrGiIjQbQuGX_uoznoVRcFXDS18mrsVZf_8n6rOJpXagWl2caDGWVvi4inYNWfsYsTh_JVd_pG7HxPwl-AUTCSuF=w360-h216-s-no-gm",
+      "category": "macbook",
+      "type": "Best Sales"
+    },
+    {
+      "id": 10,
+      "name": "OnePlus 11",
+      "rating": 4.3,
+      "reviews": 850,
+      "price": 699,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Best Sales"
+    },
+    {
+      "id": 11,
+      "name": "Samsung Galaxy Tab S8",
+      "rating": 4.6,
+      "reviews": 780,
+      "price": 899,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczNE56gTn0O5R8vduulshR014mtNQQ_LUZ3sBz-AejQPbnW1M-MrqQ7ex1D8k9SwgomRZsFYVjs1BaSXFdbrIb0mBckUxSyvkc3R3nz-LIrIcxAUw9mtv0MwQRQ4UfS-denK47RXbU06cxNGB7-mm7vA=w370-h370-s-no-gm",
+      "category": "ipad",
+      "type": "Popular"
+    },
+    {
+      "id": 12,
+      "name": "MacBook Air M1",
+      "rating": 4.8,
+      "reviews": 1100,
+      "price": 999,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczM4ElhcWcMiR9BCdVIyvT_z0M_VJeOEVUOe7seMOwErtkj_vEMB2o4YX1usiy6BBrGiIjQbQuGX_uoznoVRcFXDS18mrsVZf_8n6rOJpXagWl2caDGWVvi4inYNWfsYsTh_JVd_pG7HxPwl-AUTCSuF=w360-h216-s-no-gm",
+      "category": "macbook",
+      "type": "Best Matched"
+    },
+    {
+      "id": 13,
+      "name": "Samsung Galaxy Z Fold 5",
+      "rating": 4.6,
+      "reviews": 950,
+      "price": 1799,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Best Sales"
+    },
+    {
+      "id": 14,
+      "name": "iPad Pro 12.9",
+      "rating": 4.8,
+      "reviews": 1400,
+      "price": 1099,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczNE56gTn0O5R8vduulshR014mtNQQ_LUZ3sBz-AejQPbnW1M-MrqQ7ex1D8k9SwgomRZsFYVjs1BaSXFdbrIb0mBckUxSyvkc3R3nz-LIrIcxAUw9mtv0MwQRQ4UfS-denK47RXbU06cxNGB7-mm7vA=w370-h370-s-no-gm",
+      "category": "ipad",
+      "type": "Best Matched"
+    },
+    {
+      "id": 15,
+      "name": "MacBook Pro M2",
+      "rating": 4.7,
+      "reviews": 1500,
+      "price": 1999,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczM4ElhcWcMiR9BCdVIyvT_z0M_VJeOEVUOe7seMOwErtkj_vEMB2o4YX1usiy6BBrGiIjQbQuGX_uoznoVRcFXDS18mrsVZf_8n6rOJpXagWl2caDGWVvi4inYNWfsYsTh_JVd_pG7HxPwl-AUTCSuF=w360-h216-s-no-gm",
+      "category": "macbook",
+      "type": "Popular"
+    },
+    {
+      "id": 16,
+      "name": "Xiaomi Mi 13 Pro",
+      "rating": 4.5,
+      "reviews": 700,
+      "price": 899,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Best Matched"
+    },
+    {
+      "id": 17,
+      "name": "Lenovo Tab P11 Pro",
+      "rating": 4.4,
+      "reviews": 650,
+      "price": 499,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczNE56gTn0O5R8vduulshR014mtNQQ_LUZ3sBz-AejQPbnW1M-MrqQ7ex1D8k9SwgomRZsFYVjs1BaSXFdbrIb0mBckUxSyvkc3R3nz-LIrIcxAUw9mtv0MwQRQ4UfS-denK47RXbU06cxNGB7-mm7vA=w370-h370-s-no-gm",
+      "category": "ipad",
+      "type": "Popular"
+    },
+    {
+      "id": 18,
+      "name": "Microsoft Surface Laptop 4",
+      "rating": 4.6,
+      "reviews": 1000,
+      "price": 1299,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczM4ElhcWcMiR9BCdVIyvT_z0M_VJeOEVUOe7seMOwErtkj_vEMB2o4YX1usiy6BBrGiIjQbQuGX_uoznoVRcFXDS18mrsVZf_8n6rOJpXagWl2caDGWVvi4inYNWfsYsTh_JVd_pG7HxPwl-AUTCSuF=w360-h216-s-no-gm",
+      "category": "macbook",
+      "type": "Best Sales"
+    },
+    {
+      "id": 19,
+      "name": "Google Pixel 8 Pro",
+      "rating": 4.7,
+      "reviews": 1100,
+      "price": 999,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Best Sales"
+    },
+    {
+      "id": 20,
+      "name": "OnePlus 11",
+      "rating": 4.6,
+      "reviews": 950,
+      "price": 749,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Best Matched"
+    },
+    {
+      "id": 21,
+      "name": "Motorola Edge+ 2023",
+      "rating": 4.5,
+      "reviews": 850,
+      "price": 899,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Popular"
+    },
+    {
+      "id": 22,
+      "name": "Sony Xperia 1 V",
+      "rating": 4.4,
+      "reviews": 650,
+      "price": 1399,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Best Matched"
+    },
+    {
+      "id": 23,
+      "name": "Oppo Find X6 Pro",
+      "rating": 4.8,
+      "reviews": 1200,
+      "price": 1199,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Best Sales"
+    },
+    {
+      "id": 24,
+      "name": "Asus Zenfone 10",
+      "rating": 4.5,
+      "reviews": 900,
+      "price": 799,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Popular"
+    },
+    {
+      "id": 25,
+      "name": "Samsung Galaxy S24 Ultra",
+      "rating": 4.9,
+      "reviews": 1500,
+      "price": 1299,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Best Sales"
+    },
+    {
+      "id": 26,
+      "name": "Xiaomi 13 Pro",
+      "rating": 4.8,
+      "reviews": 1100,
+      "price": 999,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Best Matched"
+    },
+    {
+      "id": 27,
+      "name": "Vivo X90 Pro",
+      "rating": 4.7,
+      "reviews": 980,
+      "price": 1099,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Popular"
+    },
+    {
+      "id": 28,
+      "name": "Realme GT 2 Pro",
+      "rating": 4.6,
+      "reviews": 1100,
+      "price": 899,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Best Sales"
+    },
+    {
+      "id": 29,
+      "name": "Nokia X30 5G",
+      "rating": 4.5,
+      "reviews": 870,
+      "price": 599,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Best Matched"
+    },
+    {
+      "id": 30,
+      "name": "HTC U23 Pro",
+      "rating": 4.4,
+      "reviews": 600,
+      "price": 799,
+      "image": "https://lh3.googleusercontent.com/pw/AP1GczN-DFmyxklVwCSi2N21M2RXG_a7clu1IcILgqLOxf0-AVUXdKY6bdbsi0C4vJlrle0pmL3ItOR3RaogoZwzOmCM7fbqcYKfAj7eXTO6azsPrKkqY4ZJZGOTJ1MkJuzZYT2yxLejdPLOJm5BJYrIICDK=w384-h473-s-no-gm",
+      "category": "phone",
+      "type": "Popular"
+    }
+  ]
