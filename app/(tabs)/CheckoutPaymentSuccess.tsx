@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable, Image, SafeAreaView, ScrollView } from 'react-native';
 import styles from '../styles/style';
 
-const CheckoutPayment = () => {
+const CheckoutPayment = ({navigation, route }) => {
+  const { cartItems, total } = route.params || {};
   const [rating, setRating] = useState(0);
 
   const handleStarPress = (index: number) => {
@@ -28,13 +29,13 @@ const CheckoutPayment = () => {
         <View style={stylesLocal.detailsContainer}>
           <View style={stylesLocal.subtotalContainer}>
             <Text style={stylesLocal.subtotalText}>Subtotal</Text>
-            <Text style={stylesLocal.subtotalAmount}>$2,800</Text>
+            <Text style={stylesLocal.subtotalAmount}>${total}</Text>
           </View>
 
           <View style={stylesLocal.lineSeparator} />
           <View style={stylesLocal.subtotalContainer}>
             <Text style={stylesLocal.subtotalText}>Tax (10%)</Text>
-            <Text style={stylesLocal.subtotalAmount}>$280</Text>
+            <Text style={stylesLocal.subtotalAmount}>${total*1/10}</Text>
           </View>
 
           <View style={stylesLocal.lineSeparator} />
@@ -53,7 +54,7 @@ const CheckoutPayment = () => {
             <Text style={stylesLocal.subtotalText}>Total</Text>
             <View style={stylesLocal.totalContainer}>
               <Text style={stylesLocal.successText}>Success</Text>
-              <Text style={stylesLocal.totalAmount}>$3,080</Text>
+              <Text style={stylesLocal.totalAmount}>${total*11/10}</Text>
             </View>
           </View>
         </View>
@@ -74,7 +75,8 @@ const CheckoutPayment = () => {
           </View>
         </View>
 
-        <Pressable style={stylesLocal.addToCartButton}>
+        <Pressable style={stylesLocal.addToCartButton}
+        onPress={() => navigation.popToTop()}>
           <Image source={require('../../assets/image/home.png')} style={stylesLocal.cartIcon} />
           <Text style={stylesLocal.addToCartText}>Back to Home</Text>
         </Pressable>

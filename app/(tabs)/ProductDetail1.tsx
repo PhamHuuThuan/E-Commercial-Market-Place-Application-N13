@@ -263,7 +263,12 @@ const ProductDetail1 = ({ navigation, route }) => {
             style={{ flex: 1 }}
           />
           <Pressable style={{height: 50, width: '90%', backgroundColor: 'rgba(0, 224, 255, 1)', borderRadius: 5, justifyContent: 'center', alignItems: 'center', marginLeft: '5%'}}
-            onPress={() => navigation.navigate('')}>
+            onPress={() => {
+                navigation.navigate('Payment', {
+                  cartItems: cartItems,
+                  total: total,
+                });
+              }}>
                 <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Buy now - Total: ${total}</Text>
           </Pressable>
         </SafeAreaView>
