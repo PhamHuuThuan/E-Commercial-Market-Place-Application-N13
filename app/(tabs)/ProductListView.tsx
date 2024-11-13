@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, Pressable, Image, TextInput, SafeAreaView, Dimensions, FlatList, ScrollView, ActivityIndicator, Modal } from 'react-native';
 import styles from '../styles/style';
+import Filter from './Filters';
 
 const { width: viewportWidth } = Dimensions.get('window');
 
@@ -30,6 +31,7 @@ const ProductListing = ({ navigation }) => {
   const [cartVisible, setCartVisible] = useState(false);
   const [total, setTotal] = useState(0);
   const [searchText, setSearchText] = useState('');
+  const [isFilterVisible, setFilterVisible] = useState(false);
 
   useEffect(() => {
     // Tính tổng giá trị giỏ hàng mỗi khi cartItems thay đổi
@@ -209,9 +211,18 @@ const ProductListing = ({ navigation }) => {
           value={searchText}
           onChangeText={setSearchText} />
         </View>
-        <Pressable>
+        <Pressable
+        onPress={() => setFilterVisible(true)} >
           <Image source={require('../../assets/images/sort.png')} style={[styles.direcBtn, { backgroundColor: '#F1F1F1', marginLeft: 20 }]} />
         </Pressable>
+        <Modal
+          visible={isFilterVisible}
+          animationType="slide"
+          transparent={true}
+          onRequestClose={() => setFilterVisible(false)}
+          >
+            <Filter onClose={() => setFilterVisible(false)}/>
+        </Modal>
       </View>
       <View style={{ flexDirection: 'column', alignItems: 'center', marginBottom: 20 }}>
         <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
