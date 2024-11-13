@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable, Image, SafeAreaView, ScrollView } from 'react-native';
 import styles from '../styles/style';
 
-const ProductDetail2 = () => {
+const ProductDetail2 = ({navigation}) => {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [activeButton, setActiveButton] = useState<'increase' | 'decrease' | null>(null);
@@ -16,7 +16,8 @@ const ProductDetail2 = () => {
       <ScrollView contentContainerStyle={stylesLocal.scrollContainer}>
         <View style={stylesLocal.header}>
           <View style={stylesLocal.headerLeft}>
-            <Pressable>
+            <Pressable
+            onPress={() => navigation.goBack()}>
               <Image source={require('../../assets/image/left-chevron.png')} style={styles.direcBtn} />
             </Pressable>
             <Text style={styles.headingText}>T-Shirt</Text>

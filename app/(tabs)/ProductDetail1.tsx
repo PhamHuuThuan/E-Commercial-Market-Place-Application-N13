@@ -1,9 +1,52 @@
-import React, { useState, useRef } from 'react';
-import { View, Text, StyleSheet, Pressable, Image, TextInput, SafeAreaView, Dimensions, FlatList, ScrollView } from 'react-native';
+import React, { useState, useRef, useEffect}  from 'react';
+import { View, Text, StyleSheet, Pressable, Image, TextInput, SafeAreaView, Dimensions, FlatList, ScrollView, ActivityIndicator, Modal } from 'react-native';
 import styles from '../styles/style';
 
-const ProductDetail = ({ navigation }) => {
+const { width: viewportWidth } = Dimensions.get('window');
+
+const ProductDetail1 = ({ navigation, route }) => {
+    const { product } = route.params;
     const [noti, setNoti] = useState(false);
+    const [cartItems, setCartItems] = useState([]);
+    const [cartVisible, setCartVisible] = useState(false);
+    const [total, setTotal] = useState(0);
+
+    useEffect(() => {
+        // Tính tổng giá trị giỏ hàng mỗi khi cartItems thay đổi
+        const calculateTotal = () => {
+          const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+          setTotal(totalPrice);
+        };
+    
+        calculateTotal();
+      }, [cartItems]);
+    
+      useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const cartResponse = await fetch('https://67346676a042ab85d11a004f.mockapi.io/EcoMarket/carts');
+            const cartData = await cartResponse.json();
+      
+            setCartItems(cartData);
+          } catch (error) {
+            console.error('Error fetching cart data:', error);
+          }
+        };
+      
+        fetchData();
+      }, []); 
+      
+      const renderCartItem = ({ item }) => (
+        <View style={stylesLocal.cartItem}>
+          <Image source={{ uri: item.image }} style={stylesLocal.cartItemImage} />
+          <View style={stylesLocal.cartItemInfo}>
+            <Text style={stylesLocal.cartItemName}>{item.name}</Text>
+            <Text style={stylesLocal.cartItemPrice}>${item.price}</Text>
+            <Text style={stylesLocal.cartItemQuantity}>Quantity: {item.quantity}</Text>
+            <Text style={[stylesLocal.cartItemName, {color: 'red'}]}>Cash: {item.price*item.quantity}</Text>
+          </View>
+        </View>
+      );
 
   return (
     <SafeAreaView style={[styles.container, {alignItems: 'center'}]}>
@@ -13,32 +56,36 @@ const ProductDetail = ({ navigation }) => {
             onPress={()=>{navigation.goBack()}}>
                 <Image source={require('../../assets/images/left-chevron.png')} style={styles.direcBtn} />
             </Pressable>
-            <Text style={styles.headingText}>Headphone</Text>
+            <Text style={styles.headingText}>{product.name}</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Pressable>
-                <Image source={require('../../assets/images/cart.png')} style={[styles.direcBtn, { marginRight: 20 }]} />
-            </Pressable>
-            <Pressable>
-                <Image source={require('../../assets/images/avatar.png')} style={styles.profileBtn} />
-            </Pressable>
+                <Pressable style={{position: 'relative'}}
+                onPress={() => setCartVisible(true)} style={stylesLocal.cartButton}>
+                    <View style={{position: 'absolute', top: -10, right: 10, backgroundColor: 'red', width: cartItems.length<10?15:25, height: 20, borderRadius: 20, justifyContent: 'center', alignItems: 'center'}}>
+                    <Text style={{color: 'white', fontWeight: 'bold'}}>{cartItems.length}</Text>
+                    </View>
+                    <Image source={require('../../assets/images/cart.png')} style={[styles.direcBtn, { marginRight: 20 }]} />
+                </Pressable>
+                <Pressable>
+                    <Image source={require('../../assets/images/avatar.png')} style={styles.profileBtn} />
+                </Pressable>
             </View>
         </View>
         <ScrollView>
             <View>
-                <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/bc98/ce2a/91aabe8f25895b029c3835581aef2336?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=q5A~iWL5LcHb3KZblzr3ZKsgsDgT9vAxhMQMNmfT28tnm1VoS14yNbKBeW32BgJHXDjHpztgAThYl-IZdTlkCRf1rD4g~iCr-qEeJwFmTu81wAFz5nhPSxtS0AbChL71Z9eej~xrVGuQ-HwdTZBlZS6xteeCeDNh6fHJJLGxr51chvlbPxcRWxxvp6aVO1c-wNUY8Nfo7Djad6VKQMaueoU5qAYMlv26d7Rt5PuFkeADZRKzf319oAd8KJEgNVzeHoZnB~eMNrdscKmbPmUjEpmi53lEbA2uEhvk6xG9G7Jef033QJkALgj7X7FxViA7DH41ECDCmKzs8Z~S1qsdaA__'}} 
+                <Image source={{uri: product.image1}} 
                 style={{width: 375, height: 200, borderRadius: 5}}/>
             </View>
             <View style={{ width: 380 ,flexDirection: 'row', marginTop: 20, justifyContent: 'space-between'}}>
-                <Text style={styles.headingText}>$59</Text>
+                <Text style={styles.headingText}>${product.price}</Text>
                 <View style={[stylesLocal.ratingContainer, {marginRight: 10}]}>
-                    <Text style={stylesLocal.ratingText}>⭐ 4.5</Text>
-                    <Text style={stylesLocal.reviewText}>(99 reviews)</Text>
+                    <Text style={stylesLocal.ratingText}>⭐ {product.rating}</Text>
+                    <Text style={stylesLocal.reviewText}>({product.reviews} reviews)</Text>
                 </View>
             </View>
             <View style={{width: 375, marginTop: 20, paddingTop: 20, borderTopWidth: 1, borderTopColor: 'rgba(236, 236, 236, 1)'}}>
                 <Text style={styles.headingText}>Description</Text>
-                <Text style={{width: '90%', fontSize: 14, color: 'rgba(190, 190, 190, 1)', marginLeft: 10, marginTop: 10}}>Quis occaecat magna elit magna do nisi ipsum amet excepteur tempor nisi exercitation qui...</Text>
+                <Text style={{width: '90%', fontSize: 14, color: 'rgba(190, 190, 190, 1)', marginLeft: 10, marginTop: 10}}>{product.description}</Text>
                 <View style={{marginTop: 20, marginLeft: 10, flexDirection: 'row'}}>
                     <View style={{justifyContent: 'space-between', marginRight: 75}}>
                         <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 20}}> 
@@ -73,8 +120,8 @@ const ProductDetail = ({ navigation }) => {
                 </View>
                 <View style={{marginTop: 20, marginBottom: 20, flexDirection: 'row'}}>
                     <View style={{marginLeft: 30}}>
-                        <Text style={styles.headingText}>4.5/5</Text>
-                        <Text style={[stylesLocal.reviewText, {marginLeft: 10, marginTop: 10}]}>(99 reviews)</Text>
+                        <Text style={styles.headingText}>{product.rating}/5</Text>
+                        <Text style={[stylesLocal.reviewText, {marginLeft: 10, marginTop: 10}]}>({product.reviews} reviews)</Text>
                     </View>
                     <View style={{marginLeft: 150, height: 120, justifyContent: 'space-evenly'}} >
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -184,15 +231,43 @@ const ProductDetail = ({ navigation }) => {
             </View>
         </ScrollView>
         <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-evenly', marginBottom: 20, paddingTop: 20, borderTopWidth: 1, borderTopColor: 'rgba(236, 236, 236, 1)'}}>
-            <Pressable style={{width: 40, height: 40, borderColor: 'rgba(0, 224, 255, 1)', borderWidth: 0.5, borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}>
+            <Pressable style={{position: 'relative', width: 40, height: 40, borderColor: 'rgba(0, 224, 255, 1)', borderWidth: 0.5, borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}
+            onPress={() => setCartVisible(true)} >
                 <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/f098/e60e/4b26942409e13aa2c3dda427580702b3?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=q3uVQM0AkMFsyQ9V3G~U1Q7w96fHwnNK2rtXtP7mRVVYti-N1WcO1azHVDoylUSA6A2fiKKtSKNm6ZQzsijW7b1VnCiPv-5sEmgf36t8IR4cTyQDnVKEi6ytaqRVlID2HUHgseKQGFjzAIHhfN8Jn9emyL1VWJIM-88m6VrTlif-n6SHR1zJYao6sX7U2I754mYoGM9AiEFk7BqzK-~ltD44R9JWCECX-O5yV7BuGtg8IGEhoEAlgwdTjDQyJP0CyPIJ7S-xcUXK8FRMNAKofJ7v3oZa8rWh-QgmuudpHilpzYZVlw-zp14KW1f-wvQtbsirCRmUQCw7kn6z9QoarQ__'}} 
                 style={{width: 24, height: 24}}/>
+                <View style={{position: 'absolute', top: -10, right: -5, backgroundColor: 'red', width: cartItems.length<10?15:25, height: 20, borderRadius: 20, justifyContent: 'center', alignItems: 'center'}}>
+                    <Text style={{color: 'white', fontWeight: 'bold'}}>{cartItems.length}</Text>
+                </View>
             </Pressable>
             <Pressable style={{height: 40, width: '70%', backgroundColor: 'rgba(0, 224, 255, 1)', borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}
             onPress={() => navigation.navigate('ProductDetail2')}>
                 <Text style={{color: 'white'}}>Buy now</Text>
             </Pressable>
         </View>
+        <Modal
+        visible={cartVisible}
+        animationType="slide"
+        onRequestClose={() => setCartVisible(false)}
+      >
+        <SafeAreaView style={stylesLocal.cartContainer}>
+          <View style={stylesLocal.cartHeader}>
+            <Text style={stylesLocal.cartTitle}>Your Cart</Text>
+            <Pressable onPress={() => setCartVisible(false)}>
+              <Text style={stylesLocal.closeButton}>Close</Text>
+            </Pressable>
+          </View>
+          <FlatList
+            data={cartItems}
+            renderItem={renderCartItem}
+            keyExtractor={(item) => item.id.toString()}
+            style={{ flex: 1 }}
+          />
+          <Pressable style={{height: 50, width: '90%', backgroundColor: 'rgba(0, 224, 255, 1)', borderRadius: 5, justifyContent: 'center', alignItems: 'center', marginLeft: '5%'}}
+            onPress={() => navigation.navigate('')}>
+                <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Buy now - Total: ${total}</Text>
+          </Pressable>
+        </SafeAreaView>
+      </Modal>
     </SafeAreaView>
   );
 };
@@ -210,7 +285,61 @@ const stylesLocal = StyleSheet.create({
       reviewText: {
         fontSize: 10,
         color: '#888',
+      },
+      cartContainer: {
+        flex: 1,
+        padding: 20,
+        backgroundColor: '#fff',
+      },
+      cartHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 20,
+        marginTop: 20,
+        marginLeft: 20,
+      },
+      cartTitle: {
+        fontSize: 24,
+        fontWeight: 'bold',
+      },
+      closeButton: {
+        fontSize: 18,
+        color: '#007BFF',
+        marginRight: 20
+      },
+      cartItem: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 20,
+        backgroundColor: '#f9f9f9',
+        padding: 10,
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#ddd',
+        marginLeft: 20,
+        marginRight: 20,
+      },
+      cartItemImage: {
+        width: 50,
+        height: 50,
+        marginRight: 10,
+      },
+      cartItemInfo: {
+        flex: 1,
+      },
+      cartItemName: {
+        fontSize: 16,
+        fontWeight: 'bold',
+      },
+      cartItemPrice: {
+        fontSize: 14,
+        color: '#888',
+      },
+      cartItemQuantity: {
+        fontSize: 14,
+        color: '#555',
       }
 });
 
-export default ProductDetail;
+export default ProductDetail1;
