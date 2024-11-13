@@ -4,8 +4,9 @@ import styles from '../styles/style';
 import RadioGroup from 'react-native-radio-buttons-group';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const Payment = () => {
-    const [selectedId, setSelectedId] = useState(null);
+const Payment = ({navigation, route }) => {
+  const { cartItems, total } = route.params;
+  const [selectedId, setSelectedId] = useState('1');
 
     const paymentMethods = [
       {
@@ -43,7 +44,7 @@ const Payment = () => {
         <View style={{flex: 1, marginTop: 50}}>
             <View style={{alignItems: 'center'}}>
                 <Text style={{fontSize: 18, fontWeight: '500'}}>Total</Text>
-                <Text style={[styles.headingText, {fontSize: 24, marginTop: 10}]}>$5,555</Text>
+                <Text style={[styles.headingText, {fontSize: 24, marginTop: 10}]}>${total}</Text>
             </View>
             <View style={{marginTop: 50}}>
                 {paymentMethods.map((method) => (
@@ -60,12 +61,19 @@ const Payment = () => {
                     </View>
                 ))}
             </View>
-            <Pressable style={{flexDirection: 'row', width: 300, height: 45, backgroundColor: 'rgba(78, 185, 239, 1)', justifyContent: 'center', alignItems: 'center', borderRadius: 3}}>
+            <Pressable style={{flexDirection: 'row', width: 300, height: 45, backgroundColor: 'rgba(78, 185, 239, 1)', justifyContent: 'center', alignItems: 'center', borderRadius: 3}}
+            onPress={() => {
+              navigation.navigate('CheckoutPayment', {
+                cartItems: cartItems,
+                total: total,
+              });
+            }} >
                 <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/5eaf/eb06/2f7856170dd039a5a00dc431971f8333?Expires=1731283200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hc-CejdI8lc7PaLbVWBIjbNt8alNHYm0XP3nU1AomiCzMdbOhchHyOvvJF2C2o8t9OEIaJ3EXMpIK6GVd19068pDAqTYnc0RC85PRR1CclDI7FQe9PR9C3nI9mSVwIt9kNfRmaI0PTfmZKGNvSTi7bZguw~yH~2ZF505Jg9H1T8J6iRC6EjphAqnGrQv4jEStnhPU4I13IR1P1d6JNjfuyoIl84XccofF4DgrD7UztNYxY-4TFdFSqOIP~YtMbJhygRm9FXZfaSVxyrQ0bSRmjMx0X-SI-RIoWzrwvURXOG8h8whGB6fCwDbKN7LXpLXs7VSQbmSOLZopKWdMOQ9uw__'}}
                 style={{width: 24, height: 24, marginRight: 10}} />
                 <Text style={{color: '#fff'}}>Pay now</Text>
             </Pressable>
-            <Pressable style={{marginTop: 20, flexDirection: 'row', width: 300, height: 45, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center', borderRadius: 3}}>
+            <Pressable style={{marginTop: 20, flexDirection: 'row', width: 300, height: 45, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center', borderRadius: 3}}
+              >
                 <Image source={require('../../assets/images/plus.png')} style={{width: 16, height: 16, marginRight: 10}} />
                 <Text style={{fontSize: 14, color: 'rgba(78, 185, 239, 1)'}}>Add new card</Text>
             </Pressable>
