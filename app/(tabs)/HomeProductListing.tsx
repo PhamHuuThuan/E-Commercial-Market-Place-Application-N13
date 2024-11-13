@@ -33,7 +33,7 @@ const products = [
   },
 ];
 
-const ProductListing = () => {
+const ProductListing = ({navigation}) => {
   const [showAll, setShowAll] = useState(false);
 
   const toggleShowAll = () => {
@@ -48,7 +48,7 @@ const ProductListing = () => {
             <Pressable>
               <Image source={require('../../assets/image/left-chevron.png')} style={styles.direcBtn} />
             </Pressable>
-            <Text style={styles.headingText}>Fresh Fruits</Text>
+            <Text style={styles.headingText}>All Deals</Text>
           </View>
           <View style={stylesLocal.headerRight}>
             <Pressable>
@@ -72,7 +72,8 @@ const ProductListing = () => {
 
         {/* Images Section */}
         <View style={stylesLocal.imageContainer}>
-          <Pressable style={stylesLocal.categoryBox}>
+          <Pressable style={stylesLocal.categoryBox}
+          onPress={() => navigation.navigate('ProductList')}>
             <View style={[stylesLocal.imageWrapper, { backgroundColor: '#e8aaff' }]}>
               <Image source={require('../../assets/image/iphone-16.png')} style={stylesLocal.image} resizeMode="contain" />
             </View>
