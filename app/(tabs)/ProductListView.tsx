@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, StyleSheet, Pressable, Image, TextInput, SafeAreaView, Dimensions, FlatList, ScrollView, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Image, TextInput, SafeAreaView, Dimensions, FlatList, ScrollView, ActivityIndicator, Modal } from 'react-native';
 import styles from '../styles/style';
 
 const { width: viewportWidth } = Dimensions.get('window');
@@ -27,13 +27,25 @@ const ProductListing = ({ navigation }) => {
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showAll, setShowAll] = useState(false);
+  const [cartVisible, setCartVisible] = useState(false);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    // Tính tổng giá trị giỏ hàng mỗi khi cartItems thay đổi
+    const calculateTotal = () => {
+      const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+      setTotal(totalPrice);
+    };
+
+    calculateTotal();
+  }, [cartItems]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [productsResponse, cartResponse] = await Promise.all([
           fetch('https://api.mockfly.dev/mocks/551e2234-6785-4d2c-812e-265d0239a339/ProductsElectronics'),
-          fetch('https://api.mockfly.dev/mocks/551e2234-6785-4d2c-812e-265d0239a339/carts')
+          fetch('https://67346676a042ab85d11a004f.mockapi.io/EcoMarket/carts')
         ]);
 
         const productsData = await productsResponse.json();
@@ -59,39 +71,87 @@ const ProductListing = ({ navigation }) => {
   const productsToShow = showAll ? filteredProducts : filteredProducts.slice(0, 4);
 
   const addToCart = async (item) => {
-    const cartItem = {
-      id: item.id,
-      name: item.name,
-      quantity: 1, // Initial quantity
-      price: item.price,
-    };
+    // Kiểm tra xem sản phẩm đã có trong giỏ hàng hay chưa
+    const existingCartItem = cartItems.find(cartItem => cartItem.id === item.id);
   
-    try {
-      const response = await fetch('https://api.mockfly.dev/mocks/551e2234-6785-4d2c-812e-265d0239a339/carts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(cartItem),
-      });
+    if (existingCartItem) {
+      // Nếu sản phẩm đã tồn tại, tăng số lượng lên
+      try {
+        const updatedItem = {
+          ...existingCartItem,
+          quantity: existingCartItem.quantity + 1, // Tăng số lượng lên 1
+        };
   
-      if (response.ok) {
-        const newItem = await response.json();
-        setCartItems((prevItems) => [...prevItems, newItem]);
-      } else {
-        console.error('Failed to add item to cart:', response.status);
+        const response = await fetch(`https://67346676a042ab85d11a004f.mockapi.io/EcoMarket/carts/${existingCartItem.id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedItem),
+        });
+  
+        if (response.ok) {
+          const updatedCartItem = await response.json();
+          setCartItems(prevItems =>
+            prevItems.map(cartItem =>
+              cartItem.id === updatedCartItem.id ? updatedCartItem : cartItem
+            )
+          );
+        } else {
+          console.error('Failed to update item in cart:', response.status);
+        }
+      } catch (error) {
+        console.error('Error updating item in cart:', error);
       }
-    } catch (error) {
-      console.error('Error adding item to cart:', error);
+    } else {
+      // Nếu sản phẩm chưa tồn tại, thêm sản phẩm mới vào giỏ hàng
+      const cartItem = {
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        image: item.image,
+        quantity: 1,
+      };
+  
+      try {
+        const response = await fetch('https://67346676a042ab85d11a004f.mockapi.io/EcoMarket/carts', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(cartItem),
+        });
+  
+        if (response.ok) {
+          const newItem = await response.json();
+          setCartItems((prevItems) => [...prevItems, newItem]);
+        } else {
+          console.error('Failed to add item to cart:', response.status);
+        }
+      } catch (error) {
+        console.error('Error adding item to cart:', error);
+      }
     }
-  };
+  };  
 
   if (loading) {
     return <ActivityIndicator size="large" color="#0000ff" />;
   }
+  
   const renderItem = ({ item }) => (
     <View style={stylesLocal.slide}>
       <Image source={item.image} style={stylesLocal.bannerImage} />
+    </View>
+  );
+  const renderCartItem = ({ item }) => (
+    <View style={stylesLocal.cartItem}>
+      <Image source={{ uri: item.image }} style={stylesLocal.cartItemImage} />
+      <View style={stylesLocal.cartItemInfo}>
+        <Text style={stylesLocal.cartItemName}>{item.name}</Text>
+        <Text style={stylesLocal.cartItemPrice}>${item.price}</Text>
+        <Text style={stylesLocal.cartItemQuantity}>Quantity: {item.quantity}</Text>
+        <Text style={[stylesLocal.cartItemName, {color: 'red'}]}>Cash: {item.price*item.quantity}</Text>
+      </View>
     </View>
   );
 
@@ -106,7 +166,7 @@ const ProductListing = ({ navigation }) => {
           <Text style={stylesLocal.reviewText}>({item.reviews})</Text>
         </View>
       </View>
-      <Text style={stylesLocal.phonePrice}>{item.price}</Text>
+      <Text style={stylesLocal.phonePrice}>${item.price}</Text>
       <Pressable style={stylesLocal.addButton} 
       onPress={()=>{addToCart(item)}}>
         <Text style={stylesLocal.addButtonText}>+</Text>
@@ -126,7 +186,8 @@ const ProductListing = ({ navigation }) => {
           <Text style={styles.headingText}>Electronics</Text>
         </View>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Pressable style={{position: 'relative'}}>
+          <Pressable style={{position: 'relative'}}
+          onPress={() => setCartVisible(true)} style={stylesLocal.cartButton}>
             <View style={{position: 'absolute', top: -10, right: 10, backgroundColor: 'red', width: cartItems.length<10?15:25, height: 20, borderRadius: 20, justifyContent: 'center', alignItems: 'center'}}>
             <Text style={{color: 'white', fontWeight: 'bold'}}>{cartItems.length}</Text>
             </View>
@@ -275,6 +336,30 @@ const ProductListing = ({ navigation }) => {
           </View>
         )}
       />
+      <Modal
+        visible={cartVisible}
+        animationType="slide"
+        onRequestClose={() => setCartVisible(false)}
+      >
+        <SafeAreaView style={stylesLocal.cartContainer}>
+          <View style={stylesLocal.cartHeader}>
+            <Text style={stylesLocal.cartTitle}>Your Cart</Text>
+            <Pressable onPress={() => setCartVisible(false)}>
+              <Text style={stylesLocal.closeButton}>Close</Text>
+            </Pressable>
+          </View>
+          <FlatList
+            data={cartItems}
+            renderItem={renderCartItem}
+            keyExtractor={(item) => item.id.toString()}
+            style={{ flex: 1 }}
+          />
+          <Pressable style={{height: 50, width: '90%', backgroundColor: 'rgba(0, 224, 255, 1)', borderRadius: 5, justifyContent: 'center', alignItems: 'center', marginLeft: '5%'}}
+            onPress={() => navigation.navigate('')}>
+                <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Buy now - Total: ${total}</Text>
+          </Pressable>
+        </SafeAreaView>
+      </Modal>
     </SafeAreaView>
   );
 };
@@ -371,6 +456,60 @@ const stylesLocal = StyleSheet.create({
     color: '#fff',
     fontSize: 20,
   },
+  cartContainer: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#fff',
+  },
+  cartHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 20,
+    marginTop: 20,
+    marginLeft: 20,
+  },
+  cartTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  closeButton: {
+    fontSize: 18,
+    color: '#007BFF',
+    marginRight: 20
+  },
+  cartItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+    backgroundColor: '#f9f9f9',
+    padding: 10,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  cartItemImage: {
+    width: 50,
+    height: 50,
+    marginRight: 10,
+  },
+  cartItemInfo: {
+    flex: 1,
+  },
+  cartItemName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  cartItemPrice: {
+    fontSize: 14,
+    color: '#888',
+  },
+  cartItemQuantity: {
+    fontSize: 14,
+    color: '#555',
+  }
 });
 
 export default ProductListing;
