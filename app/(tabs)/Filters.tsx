@@ -11,20 +11,28 @@ const RailSelected = () => <View style={stylesLocal.railSelected} />;
 const Label = ({ text }) => <Text style={stylesLocal.label}>{text}</Text>;
 const Notch = () => <View style={stylesLocal.notch} />;
 
-const Filter = ({ onClose }) => {
+const Filter = ({onClose }) => {
     const [rating, setRating] = useState(0);
     const [low, setLow] = useState(0);
-    const [high, setHigh] = useState(1000000000);
+    const [high, setHigh] = useState(10000);
+
+    const applyFilter = () => {
+        onApplyFilter({ low, high, rating });
+    };
   
-    const renderThumb = useCallback(() => <Thumb />, []);
-    const renderRail = useCallback(() => <Rail />, []);
-    const renderRailSelected = useCallback(() => <RailSelected />, []);
-    const renderLabel = useCallback(value => <Label text={value} />, []);
-    const renderNotch = useCallback(() => <Notch />, []);
-    const handleValueChange = useCallback((low, high) => {
-      setLow(low);
-      setHigh(high);
-    }, []);
+  // Render functions for custom components
+  const renderThumb = useCallback(() => <Thumb />, []);
+  const renderRail = useCallback(() => <Rail />, []);
+  const renderRailSelected = useCallback(() => <RailSelected />, []);
+  const renderLabel = useCallback((value) => <Label text={value} />, []);
+  const renderNotch = useCallback(() => <Notch />, []);
+
+  // Handle value change in the range slider
+  const handleValueChange = useCallback((low, high) => {
+    console.log("Slider changed:", low, high); // Debugging output
+    setLow(low);  // Update low value
+    setHigh(high); // Update high value
+  }, []);
 
   return (
     <SafeAreaView style={[styles.container, {alignItems: 'center'}]}>
@@ -75,21 +83,19 @@ const Filter = ({ onClose }) => {
                 </View>
                 <View style={{marginTop: 10, flexDirection: 'row', justifyContent: 'space-evenly'}}>
                     <View style={{flexDirection: 'row', alignItems: 'center',width: 89, height: 25, borderWidth: 0.5, borderColor: 'gray', borderRadius: 5, marginLeft: 20, paddingLeft: 5, paddingRight: 5}}>
-                        <Text style={{fontSize: 16, color: 'gray', marginRight: 5}}>$</Text>
-                        <TextInput style={{width: '80%', height: 25, fontSize: 16}} value='0' />
+                        <Text style={{fontSize: 16, color: 'gray', marginRight: 5}}>${low}</Text>
                     </View>
                     <Text style={{color: 'gray'}}>---to---</Text>
                     <View style={{flexDirection: 'row', alignItems: 'center',width: 89, height: 25, borderWidth: 0.5, borderColor: 'gray', borderRadius: 5, marginLeft: 20, paddingLeft: 5, paddingRight: 5}}>
-                        <Text style={{fontSize: 16, color: 'gray', marginRight: 5}}>$</Text>
-                        <TextInput style={{width: '80%', height: 25, fontSize: 16}} value='1000' />
+                        <Text style={{fontSize: 16, color: 'gray', marginRight: 5}}>${high}</Text>
                     </View>
                 </View>
                 <View>
                     <RangeSlider
                         style={stylesLocal.slider}
                         min={0}
-                        max={1000000000}
-                        step={1000000}
+                        max={10000}
+                        step={10}
                         floatingLabel
                         renderThumb={renderThumb}
                         renderRail={renderRail}
