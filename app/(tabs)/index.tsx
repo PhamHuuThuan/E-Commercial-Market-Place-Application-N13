@@ -18,6 +18,7 @@ import ProductFeedback from './ProductFeedback';
 import SignUp  from './SignUp';
 import Login from './Login';
 import Profile from './Profile';
+import Favorites from './Favorites';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -54,10 +55,10 @@ const CustomTabBar = ({ navigation }) => {
           <Text style={{ color: getTabColor('ProductDetail1') }}>Inbox</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTabPress('Payment')}>
+      <TouchableOpacity onPress={() => handleTabPress('Favorites')}>
         <View style={{ alignItems: 'center' }}>
-          <Icon name="heart" size={24} color={getTabColor('Payment')} />
-          <Text style={{ color: getTabColor('Payment') }}>Favorites</Text>
+          <Icon name="heart" size={24} color={getTabColor('Favorites')} />
+          <Text style={{ color: getTabColor('Favorites') }}>Favorites</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => handleTabPress('SignUp')}>
@@ -75,7 +76,7 @@ const TabScreen = () => (
   <Tab.Navigator tabBar={(props) => <CustomTabBar {...props} />} screenOptions={{ headerShown: false }}>
     <Tab.Screen name="HomeProductListing" component={HomeProductListing} />
     <Tab.Screen name="Filter" component={Filter} />
-    <Tab.Screen name="Payment" component={Payment} />
+    <Tab.Screen name="Favorites" component={Favorites} />
     <Tab.Screen name="SignUp" component={SignUp} />
   </Tab.Navigator>
 );
