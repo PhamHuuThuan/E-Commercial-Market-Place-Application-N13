@@ -15,6 +15,9 @@ import HomeProductListing from './HomeProductListing';
 import CheckoutPayment from './CheckoutPaymentSuccess';
 import CheckoutCard from './CheckoutCart';
 import ProductFeedback from './ProductFeedback';
+import SignUp  from './SignUp';
+import Login from './Login';
+import Profile from './Profile';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -57,10 +60,10 @@ const CustomTabBar = ({ navigation }) => {
           <Text style={{ color: getTabColor('Payment') }}>Favorites</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTabPress('CheckoutCard')}>
+      <TouchableOpacity onPress={() => handleTabPress('SignUp')}>
         <View style={{ alignItems: 'center' }}>
-          <Icon name="person" size={24} color={getTabColor('CheckoutCard')} />
-          <Text style={{ color: getTabColor('CheckoutCard') }}>Account</Text>
+          <Icon name="person" size={24} color={getTabColor('SignUp')} />
+          <Text style={{ color: getTabColor('SignUp') }}>Account</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -73,7 +76,7 @@ const TabScreen = () => (
     <Tab.Screen name="HomeProductListing" component={HomeProductListing} />
     <Tab.Screen name="Filter" component={Filter} />
     <Tab.Screen name="Payment" component={Payment} />
-    <Tab.Screen name="CheckoutCard" component={CheckoutCard} />
+    <Tab.Screen name="SignUp" component={SignUp} />
   </Tab.Navigator>
 );
 
@@ -120,6 +123,21 @@ export default function App() {
         <Stack.Screen
           name="CheckoutCard"
           component={CheckoutCard}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SignUp"
+          component={SignUp}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
