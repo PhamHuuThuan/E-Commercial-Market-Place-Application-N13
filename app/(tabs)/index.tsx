@@ -54,10 +54,10 @@ const CustomTabBar = ({ navigation }) => {
           <Text style={{ color: getTabColor('ProductDetail1') }}>Inbox</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTabPress('Payment')}>
+      <TouchableOpacity onPress={() => handleTabPress('Favorites')}>
         <View style={{ alignItems: 'center' }}>
-          <Icon name="heart" size={24} color={getTabColor('Payment')} />
-          <Text style={{ color: getTabColor('Payment') }}>Favorites</Text>
+          <Icon name="heart" size={24} color={getTabColor('Favorites')} />
+          <Text style={{ color: getTabColor('Favorites') }}>Favorites</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => handleTabPress('SignUp')}>
@@ -74,8 +74,13 @@ const CustomTabBar = ({ navigation }) => {
 const TabScreen = () => (
   <Tab.Navigator tabBar={(props) => <CustomTabBar {...props} />} screenOptions={{ headerShown: false }}>
     <Tab.Screen name="HomeProductListing" component={HomeProductListing} />
+<<<<<<< HEAD
     <Tab.Screen name="ChatWithAI" component={ChatWithAI} />
     <Tab.Screen name="Payment" component={Payment} />
+=======
+    <Tab.Screen name="Filter" component={Filter} />
+    <Tab.Screen name="Favorites" component={Favorites} />
+>>>>>>> 0bba839c730d3d7ae8fd6641af185f1fd72d86ea
     <Tab.Screen name="SignUp" component={SignUp} />
   </Tab.Navigator>
 );
