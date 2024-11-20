@@ -89,24 +89,24 @@ const ProductDetail1 = ({ navigation, route }) => {
                 <View style={{marginTop: 20, marginLeft: 10, flexDirection: 'row'}}>
                     <View style={{justifyContent: 'space-between', marginRight: 75}}>
                         <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 20}}> 
-                            <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/41cc/4e71/4fec5dd2801cf8f5147694f1aa0d86cb?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=anya39Vy289FdxmHJXyNsXaTDT-2QhNuNb-DwH6GRxazseEckkpupwOiCmSURn6Tam4WX8f-NvARa4ZTPNh9weqmaNbT9otKOAeO40793z3a9xJu9W4jCYk4j78GKRNP53XRzOH2xgYdJKN~UHMo5NUcz8KJEdPl78K6HSry-cvvR2voNefQAteynnxNoZkmgc~AIANaGGafr-1Pwy7goPPAEmCCja8Mu8ldAFc59qjYLqCa-SSmLy3ySq1692ET8v4diBs2Ja5Y5dl17-A7iDQ8wiCxgI5yVgvxxFhDuwap88wXFHjoER9W1Vx0oLE3~4NX-9XEHqMDoSlyXIDcPg__'}} 
+                            <Image source={require('../../assets/images/trans.png')} 
                             style={{width: 24, height: 24, marginRight: 10}} />
                             <Text style={{fontSize: 14, color: 'rgba(190, 190, 190, 1)'}}>Express</Text>
                         </View>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}> 
-                            <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/bb18/5b4b/6ec731761a31363476e3e4993b8de78b?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JdVqe4OlvITT9ABJPjWFiqIY5Q9mXEpKYS1yefwzclldW7C2NDHRlh91Bqt5tTBYYY-kyTJs0H58wDMYJPnrgZjh5kY336fu9NyUswecdAG7trmlfZd1BzCQfxGDIs2QqfewHZS8pw1dv~H4J7mdM9qIF2Dqj4rRjHVXRG5Rc-p7GzQCApC02u77B7XNPxv177mGs5XpKZyzk6-Ns7YYMdcnE5D9tjmGsY~8poeC97E-R0upE9bn2YsQR1ve2-kn2BIp6R9ISpwDhZ1oN3S6M05ySdUUBDUIHZcXkLy4QtQ563fp8qmfgchdsB6Pek2XGYs7CgdCN4~CixazGnDVIA__'}} 
+                            <Image source={require('../../assets/images/star.png')} 
                             style={{width: 24, height: 24, marginRight: 10}} />
                             <Text style={{fontSize: 14, color: 'rgba(190, 190, 190, 1)'}}>Good review</Text>
                         </View>
                     </View>
                     <View style={{justifyContent: 'space-between'}}>
                         <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 20}}> 
-                            <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/cf43/f0ba/645df861ccecdffc652b79b510680e3b?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=iQMXSmgvgxB6~8Mnuf6g3OLn1SYpEFQNPto049FW9rEL3SQhgV77xF6frazEcVDawQolBzTJDxIrqQPpZ9-NhF87n3KuYNawah~LRJBg8pMZTZ-rrtzLekcixAsaVlfBEfm8m8EHF0V9tfmO1PfJ~1SVMeBA-Qf5sc3k17dUMWvhZCSsMMk3PuRl8PIXNH4F8kOlbHa2OT1xJ8qQ6Boyu9MzLCjvbDKcIS2bwbhpTeVXzENYpnYBMKAyoyVlUfaGpUlEJWCxw2OqBjKDXz9h6~4RmIfipSHW59AxPXXaWMSYQX1Q8JYPFxrUmbaKn~NJSNzFa2z-OzTIiLP7BMz0sg__'}} 
+                            <Image source={require('../../assets/images/back.png')} 
                             style={{width: 24, height: 24, marginRight: 10}} />
                             <Text style={{fontSize: 14, color: 'rgba(190, 190, 190, 1)'}}>30-day free return</Text>
                         </View>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}> 
-                            <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/0179/bb67/aa2e68583a0abe9e61f01bb7d1021bdd?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Sxk~ly7XNYWj7l6-eTh~-7yMMuxsjlXSAEITQpOHm-bWI9BP4qou5RkN2E9k6z78OqheFKKH03crOX0sunkWZrAM7VkAB-tr8cAQqdWo62Ly7hbTzeySQgVh39wdQWWsNmcjhnJQUjwuodxgna71KO68Pr10AJ8ndWtHBPh~uBz6bMa0~1y9h5TnM1ic3s2S3c9i5G5vG8N5WHMClUJJ9xYRdOzIFa12S00OD87BNXuTUMvN2u8l6kXHqKcSsxVUPUR2woGOiLiekfU4T0e~BUkDPSW1idZuRxFO8mS~tOnrLWWtwvYS~nA4nUy5vTlQklfggBjvRPXV6tNwFz-jJw__'}} 
+                            <Image source={require('../../assets/images/achive.png')} 
                             style={{width: 24, height: 24, marginRight: 10}} />
                             <Text style={{fontSize: 14, color: 'rgba(190, 190, 190, 1)'}}>Authorized shop</Text>
                         </View>
@@ -158,7 +158,7 @@ const ProductDetail1 = ({ navigation, route }) => {
                 </View>
                 <View style={{marginLeft: 10}}>
                     <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 20}}>
-                        <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/1e36/7048/a09819519fec2ae49c883f687c76c9e4?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=PlJDt2p4Vm6zGBT1bd0JccJhfmN4OmKZ81XC-hPv-vRv2CfCIdBEusLu797PQd~aL84NsorLJkdBqivGkhLQO3d7safDVa0k8rvogATm-XQW4T4pesCNuuGPuqH7d5DHzk5wsozc2llQCo~AslbxO44tQ3zC1r02f0kltsXRXw5OhxUbR-XAoxZyISGtNXTL-JA4cjHHyPaT5KKIiTYYe1paAbxrx204rLoav~fdM~FfHg1LDML-koemSiGvGqgkPFj0D86CiXgNWDMEAI0eR6w3Fp9Zoq~0iZ4RHxHKeFVBoe~dqEL9XmBWiHmu4jGPh7fvUZYP-5hqKkVbk14UFA__'}}
+                        <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/1e36/7048/a09819519fec2ae49c883f687c76c9e4?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=dngvvS3I-yRO1zXsKH58ubI9BdgCVSbFUo43lebQoF5ua-T9sy-hTX7pXojG2xtPFpATrGgGZm0fDE1dXlRT-C4FnVyQzNSB4UqYVsl2X70k6f7bPkfG3tvg~48RtvIJXQqoZHVuKfWuymWXYnNQwGci5lOZ5OdXtgdyJ3bz9Prr9bQxhLrp683TM0Kbg9TD2ns5nUyotrOf-tnl-MugPc0jjI9vNN8LLIZX5XfNe2QS4WB-sowWX09jyQ5qcM7dgthchGe~oLMYgE~lKiNnGHVNwrk4EqZllq93VkB~x0~j-pw~eNZHI1xt-8DAvclBiTIS5QGVvFBvPQN-T0PcdQ__'}}
                         style={{width: 36, height: 36}} />
                         <View style={{width: '45%'}}>
                             <Text style={styles.headingText}>Jevon Raynor</Text>
@@ -167,7 +167,7 @@ const ProductDetail1 = ({ navigation, route }) => {
                         <Text style={[stylesLocal.reviewText, {marginLeft: 10}]}>A day ago</Text>
                     </View>
                     <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 20}}>
-                        <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/0ecb/0264/ed6bae405d7a1f06d2b702842000ca23?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JGNyGkplOrRkCZt25dT2PbzPf8YM7MCd4eJrd0bTAEk~vbp35FcJV5elezWIu2EFTAAUzeiD7IaJq5knuylVMYHWTrnfkBZpg4AOSemB77Hx5pmLQYKx36GUHBdm4mjw0r3d7budJGW0Tg2J1bUdrJjWBeSsv3pyQTrIaEnX7PFHMgqc4e~ihTyKnIXnnDuXhiiT~ibVURMMnvU~c5-QYx9WF3ket7LQ9tPWbNVcF882tH0M5uEf6m8KplawBYEv0gZzQRcpTBb7~mqsBGkisWcsuUYW5sDLpyM1fdlcrIOGWfk9nWvYDWlHZF3ypisYc0md77xkVcqEQIM0j2W-Ew__'}}
+                        <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/0ecb/0264/ed6bae405d7a1f06d2b702842000ca23?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OepP1vugvM1vlFl2paH0BtUY~o0mz~jeDm~8v6ipBwJymwj6gVCkHlmDHB8jGN9gMQMWEaOuJ6UTXUqUSaSCZ0ViVeyeKC0bZzf5dJfAzh0J49EotPxEzTyOE4z6AKVZPDkP5FvZO37hNnolQHmA7wDg8IA076Qox1JDJtkMCYEQojfJaZx7-SiYrdiZuEQVVbsTnzTk~oS3OawFuG50Blr8cwuKhBhNGXqXWxCtzIe4KjuWdSn~9vZWofLEHnVhuz5UCbQn1GqAQl1I0OVEq80P7ix07SZDCin7HGVig4N5it0mZssgPJe-GsbpxGaGUTQ3X18xfSYOsGyPmekjzA__'}}
                         style={{width: 36, height: 36}} />
                         <View style={{width: '45%'}}>
                             <Text style={styles.headingText}>Jason D.</Text>
@@ -219,7 +219,7 @@ const ProductDetail1 = ({ navigation, route }) => {
                 </View>
                 <View style={{flexDirection:'row', alignItems: 'center', marginLeft: 10, paddingBottom: 20}}>
                     <View style={{width: 40, height: 40, backgroundColor: 'rgba(0, 224, 255, 1)', borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}>
-                        <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/3c09/72f3/ebe516772992a6d99c8158808ee84571?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Mt-WNYxW0kgVxhiscq0v9vYP9-GyTHUYE7GYEDCNs4Oy-~DlGenjm8vCtJ9uDqOHg7HpB1ixc1ox0zmdA9yi8PYaoy599PHeEG7KexNIvBWpXiGGu7Ah-Tc5LEjj-hHDbp3zhdGjFnqniIGmZmY5xYBoUMkPzS0l3TchMf56DInK2dp08C7vFCIMym7hl3AxAbDcN93avsyoS3uuCRzq99d99HmrBe3Ed~ghiHL2GOsv7Id6EPR6l16u--N1r1aqCUVeK6Mk-OkUqRSU2DQIa03r3oIrko00t6ZKB6lrXVt2nnRRaYsWB~dXjV-rsn0AldBQDG0nQrn2Vpq~14PGUw__'}} 
+                        <Image source={require('../../assets/images/ring.png')} 
                         style={{width: 24, height: 24}} />
                     </View>
                     <Text style={[stylesLocal.reviewText, {marginLeft: 20, width: '65%'}]}>Notify me of promotions</Text>
@@ -233,7 +233,7 @@ const ProductDetail1 = ({ navigation, route }) => {
         <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-evenly', marginBottom: 20, paddingTop: 20, borderTopWidth: 1, borderTopColor: 'rgba(236, 236, 236, 1)'}}>
             <Pressable style={{position: 'relative', width: 40, height: 40, borderColor: 'rgba(0, 224, 255, 1)', borderWidth: 0.5, borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}
             onPress={() => setCartVisible(true)} >
-                <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/f098/e60e/4b26942409e13aa2c3dda427580702b3?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=q3uVQM0AkMFsyQ9V3G~U1Q7w96fHwnNK2rtXtP7mRVVYti-N1WcO1azHVDoylUSA6A2fiKKtSKNm6ZQzsijW7b1VnCiPv-5sEmgf36t8IR4cTyQDnVKEi6ytaqRVlID2HUHgseKQGFjzAIHhfN8Jn9emyL1VWJIM-88m6VrTlif-n6SHR1zJYao6sX7U2I754mYoGM9AiEFk7BqzK-~ltD44R9JWCECX-O5yV7BuGtg8IGEhoEAlgwdTjDQyJP0CyPIJ7S-xcUXK8FRMNAKofJ7v3oZa8rWh-QgmuudpHilpzYZVlw-zp14KW1f-wvQtbsirCRmUQCw7kn6z9QoarQ__'}} 
+                <Image source={require('../../assets/images/cartblue.png')} 
                 style={{width: 24, height: 24}}/>
                 <View style={{position: 'absolute', top: -10, right: -5, backgroundColor: 'red', width: cartItems.length<10?15:25, height: 20, borderRadius: 20, justifyContent: 'center', alignItems: 'center'}}>
                     <Text style={{color: 'white', fontWeight: 'bold'}}>{cartItems.length}</Text>
