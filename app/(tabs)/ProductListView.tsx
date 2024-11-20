@@ -47,7 +47,7 @@ const ProductListing = ({ navigation }) => {
     const fetchData = async () => {
       try {
         const [productsResponse, cartResponse] = await Promise.all([
-          fetch('https://api.mockfly.dev/mocks/551e2234-6785-4d2c-812e-265d0239a339/ProductsElectronics'),
+          fetch('https://673724a4aafa2ef22232cf13.mockapi.io/ApiHomeProduct/ApiMarket_carts'),
           fetch('https://67346676a042ab85d11a004f.mockapi.io/EcoMarket/carts')
         ]);
 

@@ -7,7 +7,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ProductList from './ProductListView';
 import ProductDetail1 from './ProductDetail1';
-import Filter from './Filters';
 import Payment from './PayMent';
 import ProductListing_GridView from './ProductListingGridView';
 import ProductDetail2 from './ProductDetail2';
@@ -18,6 +17,7 @@ import ProductFeedback from './ProductFeedback';
 import SignUp  from './SignUp';
 import Login from './Login';
 import Profile from './Profile';
+import ChatWithAI from './ChatWithAI';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -42,10 +42,10 @@ const CustomTabBar = ({ navigation }) => {
           <Text style={{ color: getTabColor('HomeProductListing') }}>Home</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTabPress('Filter')}>
+      <TouchableOpacity onPress={() => handleTabPress('ChatWithAI')}>
         <View style={{ alignItems: 'center' }}>
-          <Icon name="search" size={24} color={getTabColor('Filter')} />
-          <Text style={{ color: getTabColor('Filter') }}>Search</Text>
+          <Icon name="chatbubble" size={24} color={getTabColor('ChatWithAI')} />
+          <Text style={{ color: getTabColor('ChatWithAI') }}>AI Advisor</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => handleTabPress('ProductDetail1')}>
@@ -74,7 +74,7 @@ const CustomTabBar = ({ navigation }) => {
 const TabScreen = () => (
   <Tab.Navigator tabBar={(props) => <CustomTabBar {...props} />} screenOptions={{ headerShown: false }}>
     <Tab.Screen name="HomeProductListing" component={HomeProductListing} />
-    <Tab.Screen name="Filter" component={Filter} />
+    <Tab.Screen name="ChatWithAI" component={ChatWithAI} />
     <Tab.Screen name="Payment" component={Payment} />
     <Tab.Screen name="SignUp" component={SignUp} />
   </Tab.Navigator>

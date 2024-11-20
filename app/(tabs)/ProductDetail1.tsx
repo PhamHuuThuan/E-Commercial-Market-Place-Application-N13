@@ -240,7 +240,7 @@ const ProductDetail1 = ({ navigation, route }) => {
                 </View>
             </Pressable>
             <Pressable style={{height: 40, width: '70%', backgroundColor: 'rgba(0, 224, 255, 1)', borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}
-            onPress={() => navigation.navigate('ProductDetail2')}>
+            onPress={() => navigation.navigate('ProductDetail2', { product })}>
                 <Text style={{color: 'white'}}>Buy now</Text>
             </Pressable>
         </View>
