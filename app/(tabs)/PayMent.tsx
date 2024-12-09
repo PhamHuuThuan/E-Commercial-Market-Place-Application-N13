@@ -31,6 +31,24 @@ const Payment = ({navigation, route }) => {
         cardNumber: '**** **** **** 5678',
       },
     ];
+
+    const clearCart = async () => {
+      try {
+        const deleteRequests = cartItems.map((item) =>
+          fetch(`https://67346676a042ab85d11a004f.mockapi.io/EcoMarket/carts/${item.id}`, {
+            method: 'DELETE',
+          })
+        );
+    
+        // Đợi tất cả các yêu cầu DELETE hoàn thành
+        await Promise.all(deleteRequests);
+
+      } catch (error) {
+        console.error('Error clearing the cart:', error);
+      }
+    };
+    
+
   return (
     <SafeAreaView style={[styles.container, {alignItems: 'center'}]}>
         <View style={{width: '100%',flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingBottom: 20, paddingTop: 20}}>
@@ -62,13 +80,28 @@ const Payment = ({navigation, route }) => {
                     </View>
                 ))}
             </View>
-            <Pressable style={{flexDirection: 'row', width: 300, height: 45, backgroundColor: 'rgba(78, 185, 239, 1)', justifyContent: 'center', alignItems: 'center', borderRadius: 3}}
-            onPress={() => {
-              navigation.navigate('CheckoutPayment', {
-                cartItems: cartItems,
-                total: total,
-              });
-            }} >
+            <Pressable
+              style={{
+                flexDirection: 'row',
+                width: 300,
+                height: 45,
+                backgroundColor: 'rgba(78, 185, 239, 1)',
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRadius: 3,
+              }}
+              onPress={async () => {
+                try {
+                  await clearCart(); // Xóa giỏ hàng
+                  navigation.navigate('CheckoutPayment', {
+                    cartItems: [],
+                    total: total,
+                  });
+                } catch (error) {
+                  console.error('Error during checkout process:', error);
+                }
+              }}
+            >
                 <Image source={{uri: 'https://s3-alpha-sig.figma.com/img/5eaf/eb06/2f7856170dd039a5a00dc431971f8333?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qqmLv~qJldBXqgXXBuYii2cZSMNRT2AEa8aLQN-4Hp64MxYk17X-CIItW8FfogPIJSklkpUf17bF3ZpP5jNyjAL4eFBvmeVW8J2ihwyxcLhUSA6Hq87jAoaGeZ0b~9zXnQ1vqkVZQn77DKuhCuWRYYgK21dkEg89UMArViSTlSpJsuDaHieLCrq22H~sRExIImyBOj3y0mMWx3dKo7R1SV8lN-ZMR-18lm4nYeFuBrKpIVKz9fs56FM7CpIz-0IPt0sBCS5wzRybyB-pVEPjC4wQzCMpkS8HS6hSzT3b~SC1sI4zfLYBkzUUPV55i2fqI9wr50Vvh~EPIEBs7WFUYA__'}}
                 style={{width: 24, height: 24, marginRight: 10}} />
                 <Text style={{color: '#fff'}}>Pay now</Text>

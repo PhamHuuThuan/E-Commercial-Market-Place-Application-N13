@@ -5,8 +5,8 @@ import Icon from 'react-native-vector-icons/Feather';  // Import Feather icons
 
 const Login = () => {
   const navigation = useNavigation();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('hoanghuytoi03@gmail.com');
+  const [password, setPassword] = useState('123456');
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);  // State to toggle password visibility
 
