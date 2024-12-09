@@ -80,7 +80,7 @@ const Profile = () => {
   };
 
   const handleGoBack = () => {
-    navigation.navigate('Login');
+    navigation.navigate('HomeProductListing');
   };
 
   return (
